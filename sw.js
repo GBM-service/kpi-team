@@ -1,7 +1,7 @@
 /* Service worker: เก็บหน้าเปลือกแอปไว้ในเครื่อง ให้เปิดแอปได้เร็วและแสดงข้อความเมื่อออฟไลน์
  * ข้อมูลจริงอยู่ใน Google Apps Script จึงต้องต่ออินเทอร์เน็ตเพื่อดู/บันทึกข้อมูล
  * เปลี่ยนไฟล์ในโฟลเดอร์นี้เมื่อไร ให้เพิ่มเลขรุ่นด้านล่าง เพื่อให้เครื่องผู้ใช้โหลดรุ่นใหม่ */
-const VER = 'kpi-shell-v7';
+const VER = 'kpi-shell-v8';
 const FILES = ['./', './index.html', './config.js', './qr.js', './manifest.webmanifest', './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', function (e) {
