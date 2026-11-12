@@ -311,6 +311,38 @@ dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink
 
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
 .rv.in{opacity:1;transform:none}
+/* ---------- ความกว้างตามจอ: จอคอมกว้างได้ถึง 1600px · มือถือขอบแคบ ตัวอักษรและปุ่มใหญ่ขึ้น ---------- */
+.wrap{width:min(1600px,100% - clamp(24px,5vw,112px))}
+@media (min-width:1400px){
+  .hero .wrap{gap:80px}
+  .lead{max-width:640px;font-size:20px}
+  .stage{min-height:620px}.phone{width:330px}.stage .ring{width:600px;height:600px}
+  .sec-h{max-width:860px}.sec-h p{font-size:18px}
+  .board{padding:34px}.qgrid{gap:20px}.q{padding:28px 26px 26px}.q h3{font-size:22px}.q p{font-size:16px}
+  .show{gap:80px}.laptop{max-width:900px}.laptop .lscr{font-size:12.5px;grid-template-columns:170px 1fr}
+  .igrid{gap:24px}.step{padding:30px 28px 26px}.step h3{font-size:20px}.step p{font-size:16px}
+  .mobile .box{padding:56px 64px}.qrcard{width:270px}
+}
+body{overflow-x:clip}
+@media (max-width:900px){.laptop .base{margin:0 -2%}}
+@media (min-width:1900px){.wrap{width:min(1760px,100% - 160px)}.hero h1{font-size:72px}.stage{min-height:680px}}
+@media (max-width:640px){
+  section{padding:64px 0}
+  .hero{padding:108px 0 64px}
+  .sec-h{margin-bottom:32px}.sec-h p{font-size:16px}
+  .lead{font-size:17px}
+  .btn{min-height:50px}
+  .tabs{display:flex;width:100%;margin-bottom:26px}.tabs button{flex:1;padding:11px 8px}
+  .ticks li{font-size:16px}
+  .step{padding:22px 18px 20px}.step p{font-size:16px}
+  .mobile .box{border-radius:24px;gap:28px}
+  .link code{font-size:13px;width:100%}
+  .link .btn{width:100%}
+  .q p{font-size:15px}
+  footer .wrap{justify-content:center;text-align:center}
+}
+@media (max-width:380px){.wrap{width:calc(100% - 20px)}.hero h1{font-size:32px}.phone{width:min(300px,100%)}.qrcard{width:min(240px,100%)}.chip{font-size:13.5px}}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
