@@ -1,0 +1,28 @@
+{
+  "name": "งานบำรุงรักษา & KPI อาคาร",
+  "short_name": "KPI อาคาร",
+  "description": "ระบบงานบำรุงรักษาและ KPI ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม",
+  "lang": "th",
+  "dir": "ltr",
+  "id": "./",
+  "start_url": "./?launch=app",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "any",
+  "background_color": "#052430",
+  "theme_color": "#052430",
+  "categories": ["productivity", "business", "utilities"],
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "งานของฉัน", "url": "./?page=mywork", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "สรุปผู้บริหาร", "url": "./?page=exec", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "บันทึกหน้างาน", "url": "./?page=field", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "ความพร้อมอุปกรณ์", "url": "./?page=asset", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

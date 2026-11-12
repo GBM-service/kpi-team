@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>งานบำรุงรักษา & KPI อาคาร</title>
+<meta name="theme-color" content="#052430">
+<meta name="description" content="ระบบงานบำรุงรักษาและ KPI ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม · บันทึกผ่าน QR ดูงานของตัวเอง และติดตามผลได้ทุกอุปกรณ์">
+<meta property="og:title" content="งานบำรุงรักษา & KPI อาคาร">
+<meta property="og:description" content="บันทึกผ่าน QR ดูงานของตัวเอง และติดตามผลได้ทุกอุปกรณ์">
+<meta property="og:type" content="website">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KPI อาคาร">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#052430;--ink2:#0a3442;--text:#10262c;--muted:#56707a;--line:#d9e7ec;--bg:#f3f8fa;--card:#ffffff;
+  --teal:#0fa392;--teal2:#0b6f86;--blue:#1b4fc9;--cyan:#22d3ee;--mint:#5df2a6;--amber:#f59e0b;--red:#e5484d;
+  --grad:linear-gradient(120deg,#12c2a8 0%,#0ea5c6 45%,#2563eb 100%);
+  --r:20px;--shadow:0 1px 2px rgba(5,36,48,.06),0 12px 32px -8px rgba(5,36,48,.18);
+  --font:'Noto Sans Thai',system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif;--head:'Prompt','Noto Sans Thai',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:10px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:var(--head);line-height:1.25;margin:0;letter-spacing:-.005em}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- ปุ่ม ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:14px;padding:14px 22px;font-weight:600;font-size:16px;text-decoration:none;transition:transform .18s,box-shadow .18s,background .18s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn-main{color:#fff;background:var(--grad);box-shadow:0 10px 28px -8px rgba(14,165,198,.75),inset 0 1px 0 rgba(255,255,255,.35)}
+.btn-main:hover{box-shadow:0 16px 36px -8px rgba(14,165,198,.9),inset 0 1px 0 rgba(255,255,255,.35)}
+.btn-glass{color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(8px)}
+.btn-glass:hover{background:rgba(255,255,255,.18)}
+.btn-line{color:var(--teal2);background:#fff;border:1.5px solid #b9dbe3}
+.btn-line:hover{border-color:var(--teal);color:var(--teal)}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* ---------- แถบบน ---------- */
+.top{position:fixed;inset:0 0 auto;z-index:20;transition:background .25s,box-shadow .25s,padding .25s;padding:14px 0;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+.top.solid{background:rgba(5,36,48,.82);backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 1px 0 rgba(255,255,255,.08);padding-block:10px;padding-top:calc(10px + env(safe-area-inset-top,0px))}
+.top .wrap{display:flex;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-family:var(--head);font-weight:600;font-size:17px}
+.brand img{width:40px;height:40px;border-radius:11px;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.brand small{display:block;font:500 12px var(--font);opacity:.7;letter-spacing:.01em}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{color:rgba(255,255,255,.82);text-decoration:none;font-size:15px;padding:8px 14px;border-radius:10px}
+.nav a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.top .btn{padding:10px 18px;font-size:15px}
+@media (max-width:900px){.nav{display:none}.top .btn{margin-left:auto}}
+@media (max-width:420px){.brand small{display:none}.top .btn{padding:9px 14px}}
+
+/* ---------- ส่วนหัว ---------- */
+.hero{position:relative;overflow:hidden;color:#fff;background:var(--ink);padding:150px 0 110px;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:
+  radial-gradient(900px 520px at 12% 8%,rgba(18,194,168,.42),transparent 60%),
+  radial-gradient(760px 560px at 92% 18%,rgba(37,99,235,.55),transparent 62%),
+  radial-gradient(640px 420px at 70% 100%,rgba(34,211,238,.28),transparent 60%),
+  linear-gradient(180deg,#052430,#062b3a 60%,#05222e)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;background-image:
+  linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 8px;border-radius:99px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);font-size:14px;color:#d8f3f5}
+.pill b{background:var(--grad);color:#fff;border-radius:99px;padding:2px 10px;font-size:12.5px;font-weight:600}
+.hero h1{font-size:clamp(36px,5.4vw,64px);font-weight:700;margin:22px 0 18px}
+.hero h1 span{display:block;background:linear-gradient(100deg,#7cf7d4,#38d6f5 45%,#8db4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(16px,1.6vw,19px);color:#c4dde3;max-width:560px;margin:0 0 30px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.cta .btn{font-size:17px;padding:16px 26px}
+.facts{display:flex;gap:26px;flex-wrap:wrap;margin-top:38px;padding:0;list-style:none}
+.facts li{display:flex;align-items:center;gap:10px;color:#cfe6ea;font-size:15px}
+.facts i{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-style:normal}
+.facts svg{width:18px;height:18px;color:var(--mint)}
+.stage{position:relative;display:grid;place-items:center;min-height:560px}
+.stage .ring{position:absolute;width:520px;height:520px;border-radius:50%;background:conic-gradient(from 200deg,rgba(18,194,168,.0),rgba(18,194,168,.5),rgba(37,99,235,.55),rgba(34,211,238,.0));filter:blur(50px);opacity:.75}
+.float{position:absolute;background:rgba(255,255,255,.96);color:var(--text);border-radius:16px;padding:12px 14px;box-shadow:0 22px 50px -12px rgba(0,0,0,.55);display:flex;gap:12px;align-items:center;font-size:13px;line-height:1.35}
+.float b{display:block;font:600 19px var(--head);color:var(--ink)}
+.float .ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:#fff;flex:none}
+.f1{left:-6px;top:52%;animation:bob 6s ease-in-out infinite}
+.f2{right:-10px;bottom:96px;animation:bob 7s ease-in-out -2s infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+@media (max-width:980px){.hero{padding:124px 0 70px}.hero .wrap{grid-template-columns:1fr;gap:40px}.stage{min-height:0}.f1{left:0}.f2{right:0}}
+@media (max-width:520px){.float{display:none}.cta .btn{flex:1 1 100%}}
+
+/* ---------- กรอบอุปกรณ์จำลอง ---------- */
+.phone{position:relative;width:300px;aspect-ratio:300/620;border-radius:46px;padding:11px;background:linear-gradient(145deg,#2c3d45,#0b161b);box-shadow:0 40px 80px -20px rgba(0,0,0,.65),inset 0 0 0 2px rgba(255,255,255,.08)}
+.phone .scr{position:relative;height:100%;border-radius:36px;overflow:hidden;background:#eef5f7;font-size:11.5px;line-height:1.4}
+.phone .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:92px;height:26px;border-radius:20px;background:#0b161b;z-index:3}
+.sbar{height:44px;display:flex;justify-content:space-between;align-items:flex-end;padding:0 24px 6px;font-weight:600;font-size:12px;color:#fff}
+.apphead{background:linear-gradient(135deg,#0b6f86,#1b4fc9);color:#fff;padding:0 0 16px}
+.apphead .t{padding:6px 18px 0;font:600 16px var(--head)}
+.apphead .s{padding:0 18px;opacity:.8;font-size:11px}
+.prog{margin:12px 18px 0;background:rgba(255,255,255,.15);border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:12px}
+.prog .bar{flex:1;height:8px;border-radius:9px;background:rgba(255,255,255,.22);overflow:hidden}
+.prog .bar i{display:block;height:100%;width:72%;border-radius:9px;background:linear-gradient(90deg,#5df2a6,#22d3ee)}
+.prog b{font:600 18px var(--head)}
+.list{padding:12px 12px 0;display:grid;gap:8px}
+.it{background:#fff;border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:10px;box-shadow:0 1px 3px rgba(5,36,48,.08)}
+.it .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;font-size:16px}
+.it .tx{flex:1;min-width:0}
+.it .tx b{display:block;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.it .tx span{color:var(--muted);font-size:10.5px}
+.tag{font-size:10px;font-weight:600;border-radius:99px;padding:3px 8px;white-space:nowrap}
+.t-ok{background:#dcfce7;color:#15803d}.t-due{background:#fef3c7;color:#b45309}.t-bad{background:#fee2e2;color:#b91c1c}
+.tabbar{position:absolute;left:0;right:0;bottom:0;height:62px;background:#fff;display:flex;justify-content:space-around;align-items:center;border-top:1px solid #e3edf0;padding-bottom:8px}
+.tabbar span{display:grid;justify-items:center;gap:2px;font-size:9.5px;color:#8aa0a8}
+.tabbar span.on{color:var(--teal2);font-weight:600}
+.tabbar i{width:22px;height:22px;border-radius:7px;background:currentColor;opacity:.18}
+.tabbar .on i{opacity:1;background:var(--grad)}
+.fab{position:absolute;right:16px;bottom:76px;width:52px;height:52px;border-radius:17px;background:var(--grad);display:grid;place-items:center;box-shadow:0 10px 22px -6px rgba(14,165,198,.8)}
+.fab svg{width:24px;height:24px;color:#fff}
+
+.laptop{width:100%;max-width:760px;margin-inline:auto}
+.laptop .lid{border-radius:18px 18px 6px 6px;padding:12px 12px 14px;background:linear-gradient(160deg,#2c3d45,#0b161b);box-shadow:0 40px 70px -24px rgba(5,36,48,.55)}
+.laptop .lscr{border-radius:8px;overflow:hidden;background:#f2f7f9;aspect-ratio:16/10;display:grid;grid-template-columns:150px 1fr;font-size:11px}
+.laptop .base{height:16px;margin:0 -5%;border-radius:0 0 18px 18px;background:linear-gradient(180deg,#cfdade,#9fb1b8);position:relative}
+.laptop .base::after{content:"";position:absolute;left:50%;top:0;width:110px;height:6px;border-radius:0 0 8px 8px;transform:translateX(-50%);background:#8ea1a8}
+.side{background:linear-gradient(180deg,#062b3a,#0a3a4c);color:#bcd5db;padding:14px 10px;display:grid;align-content:start;gap:4px}
+.side .lg{display:flex;align-items:center;gap:8px;color:#fff;font:600 12px var(--head);margin-bottom:10px}
+.side .lg img{width:22px;height:22px;border-radius:6px}
+.side span{padding:6px 9px;border-radius:8px}
+.side span.on{background:rgba(255,255,255,.12);color:#fff;font-weight:600}
+.dash{padding:14px 16px;display:grid;gap:10px;align-content:start;min-width:0}
+.dash h4{margin:0;font:600 14px var(--head);color:var(--ink)}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.tile{background:#fff;border-radius:10px;padding:9px 10px;box-shadow:0 1px 3px rgba(5,36,48,.08);border-top:3px solid var(--c)}
+.tile b{display:block;font:600 18px var(--head);color:var(--ink)}
+.tile span{color:var(--muted);font-size:9.5px}
+.panels{display:grid;grid-template-columns:1.5fr 1fr;gap:8px}
+.panel{background:#fff;border-radius:10px;padding:10px;box-shadow:0 1px 3px rgba(5,36,48,.08);min-width:0}
+.panel p{margin:0 0 6px;font-weight:600;color:var(--ink);font-size:10.5px}
+.hm{display:grid;grid-template-columns:52px repeat(5,1fr);gap:3px;font-size:8.5px;color:var(--muted);align-items:center}
+.hm i{height:15px;border-radius:4px}
+.rows{display:grid;gap:6px}
+.rows div{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #eef3f5;color:var(--text);font-size:10px}
+.rows div:last-child{border:0}
+.bars{display:grid;gap:7px}
+.bars div{display:grid;grid-template-columns:70px 1fr;align-items:center;gap:6px;font-size:9.5px;color:var(--muted)}
+.bars i{height:9px;border-radius:9px;width:var(--w);background:linear-gradient(90deg,#f59e0b,#ef4444)}
+
+/* ---------- ส่วนเนื้อหา ---------- */
+section{padding:96px 0}
+.sec-h{max-width:720px;margin:0 auto 46px;text-align:center}
+.eyebrow{display:inline-block;font-weight:600;font-size:14px;letter-spacing:.06em;color:var(--teal);background:#e0f6f2;border-radius:99px;padding:5px 14px;margin-bottom:14px}
+.sec-h h2{font-size:clamp(28px,3.4vw,42px);color:var(--ink)}
+.sec-h p{color:var(--muted);font-size:17px;margin:14px 0 0}
+
+.quick{margin-top:-64px;position:relative;z-index:2;padding:0}
+.board{background:rgba(255,255,255,.97);border-radius:28px;padding:26px;box-shadow:0 2px 4px rgba(5,36,48,.06),0 30px 60px -24px rgba(5,36,48,.35)}
+.bhead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.bhead h2{font-size:clamp(22px,2.4vw,28px);color:var(--ink)}
+.bhead p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#f6fafb;color:var(--ink);border-radius:99px;padding:8px 14px 8px 10px;font-weight:600;font-size:14px;transition:.18s}
+.chip:hover{border-color:var(--teal);background:#e9f8f5;transform:translateY(-1px)}
+.chip svg{width:18px;height:18px;color:var(--teal2)}
+.qgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.c-blue{--c:linear-gradient(135deg,#0ea5c6,#2563eb);--s:rgba(37,99,235,.75);--soft:#e6f0ff}
+.c-red{--c:linear-gradient(135deg,#ef4444,#f97316);--s:rgba(239,68,68,.7);--soft:#fff0eb}
+.c-violet{--c:linear-gradient(135deg,#6366f1,#a855f7);--s:rgba(124,58,237,.7);--soft:#f1edff}
+.c-amber{--c:linear-gradient(135deg,#f59e0b,#f97316);--s:rgba(245,158,11,.75);--soft:#fff6e0}
+.c-green{--c:linear-gradient(135deg,#10b981,#14b8a6);--s:rgba(16,185,129,.7);--soft:#e3f8f0}
+.q .n{position:absolute;top:18px;right:18px;font-size:12.5px;font-weight:600;color:var(--muted);background:var(--soft);border-radius:99px;padding:2px 10px}
+.q{position:relative;text-align:left;border:0;background:var(--card);border-radius:var(--r);padding:24px 22px 22px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;overflow:hidden;color:var(--text)}
+.q::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--c)}
+.q:hover{transform:translateY(-6px);box-shadow:0 2px 4px rgba(5,36,48,.06),0 26px 48px -14px rgba(5,36,48,.3)}
+.q .ic{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:var(--c);color:#fff;box-shadow:0 10px 22px -8px var(--s)}
+.q .ic svg{width:28px;height:28px}
+.q h3{font-size:20px;margin:18px 0 6px;color:var(--ink)}
+.q p{margin:0;color:var(--muted);font-size:15px}
+.q .go{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-weight:600;color:var(--teal2);font-size:15px}
+.q .go svg{width:18px;height:18px;transition:transform .2s}
+.q:hover .go svg{transform:translateX(4px)}
+@media (max-width:1100px){.qgrid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:980px){.quick{margin-top:-36px}.board{padding:20px;border-radius:24px}}
+@media (max-width:700px){.qgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:540px){
+  .board{padding:16px 14px}
+  .chips{width:100%}.chip{flex:1 1 calc(50% - 8px);justify-content:center;padding:9px 10px}
+  .q .n{display:none}
+  .qgrid{grid-template-columns:1fr;gap:12px}
+  .q{display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:2px 14px;padding:16px}
+  .q .ic{grid-row:span 2;width:52px;height:52px}
+  .q h3{margin:0;font-size:18px}.q p{font-size:14px;grid-column:2}
+  .q .go{grid-column:3;grid-row:1/span 2;margin:0;font-size:0}.q .go svg{width:22px;height:22px}
+}
+
+.tabs{display:inline-flex;gap:6px;padding:6px;border-radius:16px;background:#e3eef2;margin:0 auto 34px}
+.tabs button{border:0;background:transparent;color:var(--muted);font-weight:600;padding:10px 18px;border-radius:12px;font-size:15px}
+.tabs button[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(5,36,48,.12)}
+.center{text-align:center}
+.show{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.show .copy h3{font-size:clamp(24px,2.6vw,32px);color:var(--ink);margin-bottom:12px}
+.show .copy p{color:var(--muted);font-size:17px;margin:0 0 20px}
+.ticks{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.ticks li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
+.ticks svg{flex:none;width:24px;height:24px;margin-top:1px;padding:4px;border-radius:8px;background:#dcfce7;color:#15803d}
+.show .dev{display:grid;place-items:center}
+.note{font-size:13px;color:var(--muted);text-align:center;margin-top:18px}
+[role="tabpanel"][hidden]{display:none}
+@media (max-width:900px){.show{grid-template-columns:1fr;gap:34px}.show .dev{order:-1}}
+@media (max-width:640px){.laptop .lscr{grid-template-columns:1fr}.side{display:none}.tiles{grid-template-columns:repeat(2,1fr)}.panels{grid-template-columns:1fr}}
+
+.install{background:#fff;border-block:1px solid var(--line)}
+.igrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:26px 22px 22px}
+.step .n{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font:600 18px var(--head);color:#fff;background:var(--grad);box-shadow:0 8px 18px -6px rgba(14,165,198,.7)}
+.step h3{font-size:18px;margin:16px 0 6px;color:var(--ink)}
+.step p{margin:0;color:var(--muted);font-size:15px}
+.key{display:inline-flex;align-items:center;gap:4px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:1px 8px;font-weight:600;color:var(--ink);white-space:nowrap}
+.key svg{width:15px;height:15px}
+.ibar{display:flex;justify-content:center;margin-top:30px}
+@media (max-width:820px){.igrid{grid-template-columns:1fr}}
+
+.mobile .box{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;background:linear-gradient(135deg,#052430,#0a3a4c 55%,#123e8c);color:#fff;border-radius:30px;padding:46px;position:relative;overflow:hidden;box-shadow:0 30px 60px -24px rgba(5,36,48,.6)}
+.mobile .box::after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.35),transparent 65%)}
+.qrcard{position:relative;z-index:1;background:#fff;border-radius:24px;padding:16px;width:240px;box-shadow:0 20px 40px -12px rgba(0,0,0,.5)}
+.qrcard #qr svg{width:100%;height:auto;border-radius:10px}
+.qrcard span{display:block;text-align:center;color:var(--muted);font-size:13px;margin-top:6px}
+.mobile h2{font-size:clamp(26px,3vw,38px)}
+.mobile p{color:#c4dde3;font-size:17px;margin:12px 0 22px}
+.link{display:flex;gap:10px;align-items:center;flex-wrap:wrap;position:relative;z-index:1}
+.link code{font:500 15px ui-monospace,Consolas,monospace;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px 14px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:760px){.mobile .box{grid-template-columns:1fr;padding:30px 22px;text-align:center;justify-items:center}.link{justify-content:center}}
+
+footer{background:var(--ink);color:#9fbcc4;padding:40px 0 calc(40px + env(safe-area-inset-bottom,0px));font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer .brand{font-size:15px}
+
+/* ---------- หน้ารวมเมนูของกลุ่มงาน ---------- */
+#sheet{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(5,36,48,.55);backdrop-filter:blur(4px)}
+#sheet.on{display:flex}
+.sh{width:min(760px,100%);max-height:calc(100vh - 48px);display:flex;flex-direction:column;background:var(--bg);border-radius:28px;overflow:hidden;box-shadow:0 40px 80px -24px rgba(0,0,0,.6);animation:up .35s cubic-bezier(.2,.9,.3,1)}
+@keyframes up{from{transform:translateY(30px);opacity:0}}
+.sh-h{position:relative;color:#fff;background:var(--c);padding:26px 26px 24px;display:flex;gap:16px;align-items:center}
+.sh-h::after{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 90% 0,rgba(255,255,255,.28),transparent 60%);pointer-events:none}
+.sh-h .ic{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);flex:none}
+.sh-h .ic svg{width:32px;height:32px}
+.sh-h h2{font-size:26px}
+.sh-h p{margin:2px 0 0;opacity:.9}
+.sh-x{position:absolute;top:14px;right:14px;z-index:1;width:42px;height:42px;border-radius:12px;border:0;background:rgba(255,255,255,.2);color:#fff;display:grid;place-items:center}
+.sh-x:hover{background:rgba(255,255,255,.32)}
+.sh-x svg{width:22px;height:22px}
+.sh-b{overflow:auto;padding:22px 24px calc(26px + env(safe-area-inset-bottom,0px));-webkit-overflow-scrolling:touch}
+.sh-b h3{font-size:15px;color:var(--muted);font-weight:600;margin:4px 0 12px;letter-spacing:.02em}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:24px}
+.pg button{display:flex;align-items:center;gap:12px;text-align:left;border:1px solid var(--line);background:#fff;border-radius:16px;padding:14px;font-weight:600;color:var(--ink);font-size:15px;transition:.18s}
+.pg button:hover{border-color:transparent;box-shadow:0 10px 24px -10px var(--s);transform:translateY(-2px)}
+.pg button i{width:36px;height:36px;border-radius:11px;background:var(--c);display:grid;place-items:center;flex:none;color:#fff}
+.pg button i svg{width:19px;height:19px}
+.sys{display:grid;gap:8px}
+.srow{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 10px 10px 14px}
+.srow code{font:600 13px ui-monospace,Consolas,monospace;color:var(--ink);background:var(--soft);border-radius:8px;padding:4px 8px;flex:none}
+.srow span{flex:1;min-width:0;font-weight:500;color:var(--text)}
+.srow button{border:0;border-radius:11px;padding:8px 12px;font-weight:600;font-size:14px;white-space:nowrap}
+.srow .v{background:#eef4f6;color:var(--ink)}
+.srow .v:hover{background:#e0ecf0}
+.srow .r{color:#fff;background:var(--c);box-shadow:0 6px 14px -6px var(--s)}
+.sh-note{margin:14px 2px 0;color:var(--muted);font-size:13px}
+body.sheet-open{overflow:hidden}
+@media (max-width:640px){
+  #sheet{padding:0;align-items:flex-end}
+  .sh{max-height:92vh;border-radius:26px 26px 0 0}
+  .sh-h{padding:22px 60px 20px 20px}.sh-h h2{font-size:22px}.sh-h .ic{width:50px;height:50px}
+  .sh-b{padding:18px 14px calc(22px + env(safe-area-inset-bottom,0px))}
+  .srow{flex-wrap:wrap}.srow span{flex-basis:calc(100% - 70px)}.srow button{flex:1}
+}
+
+/* ---------- โหมดเปิดระบบ ---------- */
+#app{position:fixed;inset:0;z-index:50;background:#fff;padding-top:env(safe-area-inset-top,0px);display:none}
+#app iframe{display:block;width:100%;height:100%;border:0;background:#fff}
+body.in-app{overflow:hidden}
+body.in-app #app{display:block}
+#splash{position:fixed;inset:0;z-index:60;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:24px;color:#fff;background:radial-gradient(700px 500px at 20% 10%,rgba(18,194,168,.45),transparent 60%),radial-gradient(700px 500px at 90% 90%,rgba(37,99,235,.55),transparent 60%),#052430;transition:opacity .45s}
+#splash.on{display:flex}
+#splash.hide{opacity:0;pointer-events:none}
+#splash img{width:104px;height:104px;border-radius:26px;box-shadow:0 18px 40px -10px rgba(0,0,0,.6);animation:pop .6s cubic-bezier(.2,1.4,.4,1)}
+#splash h2{font-size:22px}
+#splash p{margin:0;color:#c4dde3}
+.loader{width:180px;height:5px;border-radius:9px;background:rgba(255,255,255,.15);overflow:hidden}
+.loader i{display:block;width:40%;height:100%;border-radius:9px;background:linear-gradient(90deg,#5df2a6,#22d3ee);animation:load 1.3s ease-in-out infinite}
+@keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(260%)}}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+
+#toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;z-index:80;background:#0a3442;color:#fff;border-radius:14px;padding:12px 18px;box-shadow:0 14px 34px -10px rgba(0,0,0,.5);transition:.3s;max-width:calc(100% - 32px);font-size:15px}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+#toast.err{background:#b42318}
+#off{display:none;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:90;background:#b42318;color:#fff;border-radius:14px;padding:12px 16px;font-size:15px;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+#off button{color:#fff;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.5);border-radius:9px;padding:4px 12px;margin-left:8px}
+dialog{border:0;border-radius:22px;padding:28px;max-width:460px;width:calc(100% - 32px);box-shadow:0 30px 70px -20px rgba(0,0,0,.6);color:var(--text)}
+dialog::backdrop{background:rgba(5,36,48,.6);backdrop-filter:blur(3px)}
+dialog h3{color:var(--ink);font-size:20px;margin-bottom:8px}
+dialog p{color:var(--muted);margin:0 0 18px}
+dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink)}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-login" viewBox="0 0 24 24"><path d="M10 17l5-5-5-5M15 12H3M14 3h4a3 3 0 013 3v12a3 3 0 01-3 3h-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l2 2 4-4"/><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 17h8"/></g></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></g></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3M21 14v.01M17 21h4v-4M14 18v3"/></g></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></g></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-dev" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></g></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M8 7l4-4 4 4"/><path d="M6 11H5a2 2 0 00-2 2v6a2 2 0 002 2h14a2 2 0 002-2v-6a2 2 0 00-2-2h-1"/></g></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></g></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 8v8M8 12h8"/></g></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 00-5.4 5.2L3.6 17.2a1.9 1.9 0 002.7 2.7l5.7-5.7a4 4 0 005.2-5.4l-2.6 2.6-2.4-.6-.6-2.4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-fire" viewBox="0 0 24 24"><path d="M12 22c4 0 7-2.8 7-6.8 0-3.6-2.6-6-4.2-8.7-.6 2.2-1.6 3.4-3 4C11.6 7.6 10.4 4.6 8 2c.3 3.6-3 6.6-3 11.2C5 18.9 8 22 12 22zm0 0c-1.7 0-3-1.2-3-3 0-1.8 1.5-2.9 2.2-4.6.9 1.2 3.8 2.5 3.8 4.6 0 1.8-1.3 3-3 3z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3v-5l2-5.5A2 2 0 016.9 5h10.2a2 2 0 011.9 1.5L21 12v5h-2"/><path d="M3 12h18M9 17h6"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></g></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></g></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></g></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/></g></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#main" aria-label="หน้าแรก"><img src="icons/icon.svg" alt="" width="40" height="40"><span><span class="js-name">KPI อาคาร</span><small class="js-org">ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม</small></span></a>
+    <nav class="nav" aria-label="เมนู">
+      <a href="#work">ระบบงาน</a><a href="#screens">ตัวอย่างหน้าจอ</a><a href="#install">ติดตั้งแอป</a><a href="#mobile">เปิดบนมือถือ</a>
+    </nav>
+    <button class="btn btn-main" type="button" data-open=""><svg><use href="#i-login"/></svg>เข้าสู่ระบบ</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="h1">
+    <div class="wrap">
+      <div>
+        <span class="pill"><b>แอป</b><span class="js-org">ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม</span></span>
+        <h1 id="h1">งานบำรุงรักษา<span>& KPI อาคาร</span></h1>
+        <p class="lead">บันทึกการตรวจเช็คด้วยการสแกน QR เห็นงานของตัวเองชัดเจน และติดตามผลตัวชี้วัดของฝ่ายได้ทันที ในแอปเดียวที่ใช้ได้ทั้งโทรศัพท์ แท็บเล็ต และคอมพิวเตอร์</p>
+        <div class="cta">
+          <button class="btn btn-main" type="button" data-open=""><svg><use href="#i-login"/></svg>เข้าสู่ระบบ</button>
+          <a class="btn btn-glass" href="#install"><svg><use href="#i-dl"/></svg>ติดตั้งเป็นแอป</a>
+        </div>
+        <ul class="facts">
+          <li><i><svg><use href="#i-qr"/></svg></i>สแกน QR บันทึกงาน</li>
+          <li><i><svg><use href="#i-bolt"/></svg></i>ผลขึ้นทันที</li>
+          <li><i><svg><use href="#i-shield"/></svg></i>เข้าด้วยรหัสส่วนตัว</li>
+        </ul>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <div class="ring"></div>
+        <div class="phone">
+          <div class="scr">
+            <div class="notch"></div>
+            <div class="apphead">
+              <div class="sbar"><span>9:41</span><span>5G ▮▮▮</span></div>
+              <div class="t">👷 งานของฉัน</div>
+              <div class="s">เดือนนี้ · 18 จาก 25 รายการ</div>
+              <div class="prog"><div class="bar"><i></i></div><b>72%</b></div>
+            </div>
+            <div class="list">
+              <div class="it"><div class="ic" style="background:#dcfce7">🧯</div><div class="tx"><b>ถังดับเพลิง อาคาร A</b><span>ตรวจแล้ว 24/24 ถัง</span></div><span class="tag t-ok">ครบ</span></div>
+              <div class="it"><div class="ic" style="background:#fef3c7">⚡</div><div class="tx"><b>เครื่องกำเนิดไฟฟ้า</b><span>รายสัปดาห์ · ครบกำหนดวันนี้</span></div><span class="tag t-due">วันนี้</span></div>
+              <div class="it"><div class="ic" style="background:#e0f2fe">💡</div><div class="tx"><b>ไฟฉุกเฉิน ชั้น 3</b><span>เหลือ 6 จุด</span></div><span class="tag t-due">ค้าง</span></div>
+              <div class="it"><div class="ic" style="background:#fee2e2">🚪</div><div class="tx"><b>ประตูหนีไฟ อาคาร B</b><span>พบชำรุด 1 บาน · รอซ่อม</span></div><span class="tag t-bad">ชำรุด</span></div>
+              <div class="it"><div class="ic" style="background:#ede9fe">🔔</div><div class="tx"><b>ระบบแจ้งเหตุเพลิงไหม้</b><span>ตรวจแล้ว 43 ข้อ</span></div><span class="tag t-ok">ผ่าน</span></div>
+            </div>
+            <div class="fab"><svg><use href="#i-qr"/></svg></div>
+            <div class="tabbar"><span class="on"><i></i>งานของฉัน</span><span><i></i>สแกน</span><span><i></i>สรุป</span><span><i></i>ตั้งค่า</span></div>
+          </div>
+        </div>
+        <div class="float f1"><div class="ic" style="background:linear-gradient(135deg,#12c2a8,#0ea5c6)"><svg width="20" height="20"><use href="#i-chart"/></svg></div><div>KPI ตามแผน<b>94.6%</b></div></div>
+        <div class="float f2"><div class="ic" style="background:linear-gradient(135deg,#22c55e,#10b981)"><svg width="20" height="20"><use href="#i-check"/></svg></div><div>บันทึกสำเร็จ<b>+1 ตรวจแล้ว</b></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quick" id="work" aria-labelledby="h-work">
+    <div class="wrap">
+      <div class="board rv">
+        <div class="bhead">
+          <div><h2 id="h-work">เลือกระบบงาน</h2><p>กดที่งานของคุณเพื่อดูเมนูและระบบย่อยทั้งหมดของงานนั้น</p></div>
+          <div class="chips" aria-label="ทางลัด">
+            <button class="chip" type="button" data-open="mywork"><svg><use href="#i-user"/></svg>งานของฉัน</button>
+            <button class="chip" type="button" data-open="exec"><svg><use href="#i-chart"/></svg>สรุปผู้บริหาร</button>
+            <button class="chip" type="button" data-open="field"><svg><use href="#i-qr"/></svg>บันทึกหน้างาน</button>
+            <button class="chip" type="button" data-open="asset"><svg><use href="#i-shield"/></svg>ความพร้อมอุปกรณ์</button>
+          </div>
+        </div>
+        <div class="qgrid" id="groups"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens" aria-labelledby="h-screens">
+    <div class="wrap">
+      <div class="sec-h rv"><span class="eyebrow">ตัวอย่างหน้าจอ</span><h2 id="h-screens">ใช้งานง่ายทุกบทบาท</h2><p>หน้าจอปรับตามสิทธิ์ของผู้ใช้ เจ้าหน้าที่เห็นงานของตัวเอง ผู้บริหารเห็นภาพรวมทั้งฝ่าย</p></div>
+      <div class="center"><div class="tabs" role="tablist" aria-label="ตัวอย่างหน้าจอ">
+        <button role="tab" aria-selected="true" aria-controls="sc-exec" id="tb-exec">ผู้บริหาร</button>
+        <button role="tab" aria-selected="false" aria-controls="sc-field" id="tb-field" tabindex="-1">เจ้าหน้าที่หน้างาน</button>
+      </div></div>
+
+      <div role="tabpanel" id="sc-exec" aria-labelledby="tb-exec">
+        <div class="laptop rv" aria-hidden="true">
+          <div class="lid"><div class="lscr">
+            <div class="side"><div class="lg"><img src="icons/icon.svg" alt="">KPI อาคาร</div><span class="on">📊 สรุปผู้บริหาร</span><span>🧯 ความพร้อมอุปกรณ์</span><span>📋 ผลตรวจจากฟอร์ม</span><span>🛠 แผนบำรุงรักษา</span><span>📄 รายงาน PDF</span></div>
+            <div class="dash">
+              <h4>สรุปสำหรับผู้บริหาร · ปีงบประมาณ 2570</h4>
+              <div class="tiles">
+                <div class="tile" style="--c:#12c2a8"><b>94.6%</b><span>ทำได้ตามแผน</span></div>
+                <div class="tile" style="--c:#2563eb"><b>1,284</b><span>รายการที่ตรวจ</span></div>
+                <div class="tile" style="--c:#f59e0b"><b>17</b><span>รอซ่อม</span></div>
+                <div class="tile" style="--c:#e5484d"><b>3</b><span>KPI ต่ำกว่าเป้า</span></div>
+              </div>
+              <div class="panels">
+                <div class="panel"><p>ผลรายเดือนเทียบเป้าหมาย</p>
+                  <svg viewBox="-4 0 332 120" width="100%" role="img" aria-label="กราฟตัวอย่าง">
+                    <defs><linearGradient id="ga" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#0ea5c6" stop-opacity=".35"/><stop offset="1" stop-color="#0ea5c6" stop-opacity="0"/></linearGradient></defs>
+                    <g stroke="#e3edf0"><path d="M0 20H320M0 50H320M0 80H320M0 110H320"/></g>
+                    <path d="M0 34H320" stroke="#e5484d" stroke-dasharray="5 5" stroke-width="1.5"/>
+                    <path d="M0 78 L29 70 L58 62 L87 66 L116 50 L145 44 L174 46 L203 36 L232 30 L261 28 L290 22 L320 18 V120 H0Z" fill="url(#ga)"/>
+                    <path d="M0 78 L29 70 L58 62 L87 66 L116 50 L145 44 L174 46 L203 36 L232 30 L261 28 L290 22 L320 18" fill="none" stroke="#0ea5c6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+                    <circle cx="320" cy="18" r="5" fill="#fff" stroke="#2563eb" stroke-width="3"/>
+                  </svg>
+                </div>
+                <div class="panel"><p>ความพร้อมรายอาคาร</p>
+                  <div class="hm">
+                    <span></span><span>ถัง</span><span>ตู้</span><span>ไฟ</span><span>ประตู</span><span>FA</span>
+                    <span>อาคาร A</span><i style="background:#22c55e"></i><i style="background:#22c55e"></i><i style="background:#facc15"></i><i style="background:#22c55e"></i><i style="background:#22c55e"></i>
+                    <span>อาคาร B</span><i style="background:#22c55e"></i><i style="background:#facc15"></i><i style="background:#22c55e"></i><i style="background:#ef4444"></i><i style="background:#22c55e"></i>
+                    <span>อาคาร C</span><i style="background:#86efac"></i><i style="background:#22c55e"></i><i style="background:#22c55e"></i><i style="background:#22c55e"></i><i style="background:#facc15"></i>
+                    <span>อาคาร D</span><i style="background:#22c55e"></i><i style="background:#22c55e"></i><i style="background:#ef4444"></i><i style="background:#86efac"></i><i style="background:#22c55e"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="panels">
+                <div class="panel"><p>รายการรอซ่อมที่ต้องติดตาม</p>
+                  <div class="rows">
+                    <div><span>ประตูหนีไฟ อาคาร B ชั้น 4</span><span class="tag t-bad">12 วัน</span></div>
+                    <div><span>ไฟฉุกเฉิน อาคาร D ชั้น 2</span><span class="tag t-due">5 วัน</span></div>
+                    <div><span>ตู้ดับเพลิง อาคาร B ชั้น 1</span><span class="tag t-due">3 วัน</span></div>
+                  </div>
+                </div>
+                <div class="panel"><p>สาเหตุชำรุดที่พบบ่อย</p>
+                  <div class="bars">
+                    <div><span>แบตเตอรี่เสื่อม</span><i style="--w:86%"></i></div>
+                    <div><span>แรงดันต่ำ</span><i style="--w:58%"></i></div>
+                    <div><span>บานพับชำรุด</span><i style="--w:34%"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div></div>
+          <div class="base"></div>
+        </div>
+        <p class="note">ภาพจำลองเพื่อแสดงหน้าตาระบบ ตัวเลขไม่ใช่ข้อมูลจริง</p>
+      </div>
+
+      <div role="tabpanel" id="sc-field" aria-labelledby="tb-field" hidden>
+        <div class="show">
+          <div class="copy">
+            <h3>สแกน แตะ บันทึก เสร็จในไม่กี่วินาที</h3>
+            <p>ติดป้าย QR ที่อุปกรณ์ เจ้าหน้าที่สแกนแล้วเห็นรายการตรวจของอุปกรณ์นั้นทันที กดผ่านหรือไม่ผ่านทีละข้อ ผลเข้าสู่ KPI ของฝ่ายอัตโนมัติ</p>
+            <ul class="ticks">
+              <li><svg><use href="#i-check"/></svg>รายการตรวจตรงกับแบบฟอร์มของแต่ละระบบ</li>
+              <li><svg><use href="#i-check"/></svg>พบชำรุดส่งเข้ารายการรอซ่อมเอง</li>
+              <li><svg><use href="#i-check"/></svg>ดูประวัติการตรวจย้อนหลังของอุปกรณ์ได้</li>
+            </ul>
+          </div>
+          <div class="dev" aria-hidden="true">
+            <div class="phone">
+              <div class="scr">
+                <div class="notch"></div>
+                <div class="apphead">
+                  <div class="sbar"><span>9:41</span><span>5G ▮▮▮</span></div>
+                  <div class="t">🧯 ตู้ดับเพลิง FH-07</div>
+                  <div class="s">อาคาร A ชั้น 2 · ตรวจล่าสุด 3 วันก่อน</div>
+                </div>
+                <div class="list">
+                  <div class="it"><div class="tx"><b>สายฉีดน้ำดับเพลิง</b><span>ไม่รั่ว ไม่ชำรุด</span></div><span class="tag t-ok">ผ่าน</span></div>
+                  <div class="it"><div class="tx"><b>หัวฉีดและวาล์ว</b><span>เปิด–ปิดได้คล่อง</span></div><span class="tag t-ok">ผ่าน</span></div>
+                  <div class="it"><div class="tx"><b>ป้ายและไฟส่องสว่าง</b><span>มองเห็นชัดเจน</span></div><span class="tag t-ok">ผ่าน</span></div>
+                  <div class="it"><div class="tx"><b>ทางเข้าถึงตู้</b><span>มีของวางกีดขวาง</span></div><span class="tag t-bad">ไม่ผ่าน</span></div>
+                  <div class="it"><div class="tx"><b>สภาพตู้</b><span>สะอาด ปิดสนิท</span></div><span class="tag t-ok">ผ่าน</span></div>
+                </div>
+                <div style="position:absolute;left:12px;right:12px;bottom:74px;border-radius:14px;padding:12px;text-align:center;color:#fff;font-weight:600;font-size:13px;background:var(--grad);box-shadow:0 10px 22px -6px rgba(14,165,198,.8)">บันทึกผลการตรวจ</div>
+                <div class="tabbar"><span><i></i>งานของฉัน</span><span class="on"><i></i>สแกน</span><span><i></i>สรุป</span><span><i></i>ตั้งค่า</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="note">ภาพจำลองเพื่อแสดงหน้าตาระบบ ตัวเลขไม่ใช่ข้อมูลจริง</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="install" id="install" aria-labelledby="h-install">
+    <div class="wrap">
+      <div class="sec-h rv"><span class="eyebrow">ติดตั้งแอป</span><h2 id="h-install">ติดตั้งไว้บนหน้าจอ เปิดได้ในแตะเดียว</h2><p>ไม่ต้องโหลดจาก App Store หรือ Play Store ไม่กินพื้นที่ และอัปเดตเองทุกครั้งที่เปิด</p></div>
+      <div class="center"><div class="tabs" role="tablist" aria-label="เลือกอุปกรณ์">
+        <button role="tab" aria-selected="true" aria-controls="in-ios" id="ti-ios">iPhone / iPad</button>
+        <button role="tab" aria-selected="false" aria-controls="in-and" id="ti-and" tabindex="-1">Android</button>
+        <button role="tab" aria-selected="false" aria-controls="in-pc" id="ti-pc" tabindex="-1">คอมพิวเตอร์</button>
+      </div></div>
+      <div role="tabpanel" id="in-ios" aria-labelledby="ti-ios"><div class="igrid">
+        <div class="step"><div class="n">1</div><h3>เปิดด้วย Safari</h3><p>เปิดลิงก์หน้านี้ในแอป Safari (บน iPhone ต้องใช้ Safari จึงติดตั้งได้)</p></div>
+        <div class="step"><div class="n">2</div><h3>กดปุ่มแชร์</h3><p>แตะ <span class="key"><svg><use href="#i-share"/></svg>แชร์</span> ที่แถบล่างของหน้าจอ</p></div>
+        <div class="step"><div class="n">3</div><h3>เพิ่มไปยังหน้าจอโฮม</h3><p>เลื่อนหา <span class="key"><svg><use href="#i-plus"/></svg>เพิ่มไปยังหน้าจอโฮม</span> แล้วกด <b>เพิ่ม</b></p></div>
+      </div></div>
+      <div role="tabpanel" id="in-and" aria-labelledby="ti-and" hidden><div class="igrid">
+        <div class="step"><div class="n">1</div><h3>เปิดด้วย Chrome</h3><p>เปิดลิงก์หน้านี้ในแอป Chrome บนโทรศัพท์</p></div>
+        <div class="step"><div class="n">2</div><h3>เปิดเมนู</h3><p>แตะ <span class="key"><svg><use href="#i-dots"/></svg>เมนู</span> มุมขวาบน</p></div>
+        <div class="step"><div class="n">3</div><h3>ติดตั้งแอป</h3><p>เลือก <span class="key">ติดตั้งแอป</span> หรือ <span class="key">เพิ่มลงในหน้าจอหลัก</span> แล้วยืนยัน</p></div>
+      </div></div>
+      <div role="tabpanel" id="in-pc" aria-labelledby="ti-pc" hidden><div class="igrid">
+        <div class="step"><div class="n">1</div><h3>เปิดด้วย Chrome หรือ Edge</h3><p>เปิดลิงก์หน้านี้ในเบราว์เซอร์ Chrome หรือ Microsoft Edge</p></div>
+        <div class="step"><div class="n">2</div><h3>กดไอคอนติดตั้ง</h3><p>คลิกไอคอน <span class="key"><svg><use href="#i-dl"/></svg>ติดตั้ง</span> ท้ายช่องที่อยู่เว็บ</p></div>
+        <div class="step"><div class="n">3</div><h3>เปิดจากเดสก์ท็อป</h3><p>แอปจะมีไอคอนบนเดสก์ท็อปและเมนูเริ่ม เปิดเป็นหน้าต่างของตัวเอง</p></div>
+      </div></div>
+      <div class="ibar"><button class="btn btn-main" id="installBtn" type="button" hidden><svg><use href="#i-dl"/></svg>ติดตั้งแอปบนเครื่องนี้</button></div>
+    </div>
+  </section>
+
+  <section class="mobile" id="mobile" aria-labelledby="h-mobile">
+    <div class="wrap">
+      <div class="box rv">
+        <div class="qrcard"><div id="qr"></div><span>สแกนด้วยกล้องโทรศัพท์</span></div>
+        <div>
+          <span class="eyebrow" style="background:rgba(255,255,255,.12);color:#7cf7d4">เปิดบนมือถือ</span>
+          <h2 id="h-mobile">สแกนเพื่อเปิดหน้านี้บนโทรศัพท์</h2>
+          <p>เปิดกล้องโทรศัพท์แล้วส่องที่ QR จากนั้นติดตั้งแอปตามขั้นตอนด้านบน หรือคัดลอกลิงก์ส่งให้เพื่อนร่วมงาน</p>
+          <div class="link"><code id="pageUrl">…</code><button class="btn btn-glass" type="button" id="copyBtn"><svg><use href="#i-copy"/></svg>คัดลอกลิงก์</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand"><img src="icons/icon.svg" alt="" width="34" height="34"><span><span class="js-name">KPI อาคาร</span><small class="js-org">ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม</small></span></span>
+    <span>ข้อมูลทั้งหมดเก็บในระบบของฝ่าย · ต้องต่ออินเทอร์เน็ตเพื่อใช้งาน</span>
+  </div>
+</footer>
+
+<div id="sheet" role="dialog" aria-modal="true" aria-labelledby="shName">
+  <div class="sh" id="shBox">
+    <div class="sh-h">
+      <div class="ic" id="shIc"></div>
+      <div><h2 id="shName"></h2><p id="shDesc"></p></div>
+      <button class="sh-x" type="button" id="shClose" aria-label="ปิด"><svg><use href="#i-x"/></svg></button>
+    </div>
+    <div class="sh-b">
+      <div id="shPages"></div>
+      <h3 id="shSysH">ระบบงาน · ดูประวัติหรือบันทึกผลการตรวจ</h3>
+      <div class="sys" id="shSys"></div>
+      <p class="sh-note">ข้อมูลที่เห็นและสิ่งที่บันทึกได้ขึ้นกับสิทธิ์ของผู้ใช้แต่ละคน</p>
+    </div>
+  </div>
+</div>
+<div id="app" aria-live="polite"></div>
+<div id="splash" role="status" aria-live="polite">
+  <img src="icons/icon.svg" alt="">
+  <h2 class="js-name">งานบำรุงรักษา & KPI อาคาร</h2>
+  <p class="js-org">ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม</p>
+  <div class="loader" aria-hidden="true"><i></i></div>
+  <p id="splashMsg">กำลังเปิดระบบ…</p>
+</div>
+<dialog id="cfgDlg" aria-labelledby="cfgH">
+  <h3 id="cfgH">ยังไม่ได้ตั้งลิงก์ระบบ</h3>
+  <p>ผู้ดูแลต้องเปิดไฟล์ <code>config.js</code> แล้ววางลิงก์ Web app ของ Google Apps Script (ลงท้ายด้วย <code>/exec</code>) ในช่อง <code>APP_URL</code> จากนั้นอัปโหลดขึ้น GitHub อีกครั้ง</p>
+  <form method="dialog"><button class="btn btn-main" style="width:100%">เข้าใจแล้ว</button></form>
+</dialog>
+<div id="toast" role="status"></div>
+<div id="off" role="alert">ไม่มีการเชื่อมต่ออินเทอร์เน็ต ต่ออินเทอร์เน็ตแล้วกดลองใหม่<button type="button" onclick="location.reload()">ลองใหม่</button></div>
+
+<script src="config.js"></script>
+<script src="qr.js"></script>
+<script>
+(function () {
+  'use strict';
+  var C = window.KPI_APP || {}, $ = function (id) { return document.getElementById(id); };
+  var NAME = C.APP_NAME || 'งานบำรุงรักษา & KPI อาคาร', ORG = C.ORG || 'ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม';
+  var URL0 = String(C.APP_URL || '').trim();
+  var URL_OK = /^https:\/\/script\.google\.com\/(a\/[^\/]+\/)?macros\/s\/[\w-]{20,}\/exec$/.test(URL0);
+  document.title = NAME;
+  Array.prototype.forEach.call(document.querySelectorAll('.js-org'), function (e) { e.textContent = ORG; });
+  Array.prototype.forEach.call(document.querySelectorAll('#splash .js-name'), function (e) { e.textContent = NAME; });
+
+  function toast(t, err) {
+    var x = $('toast'); x.textContent = t; x.className = 'on' + (err ? ' err' : '');
+    clearTimeout(toast.t); toast.t = setTimeout(function () { x.className = ''; }, 3200);
+  }
+
+  /* ---------- เปิดระบบในหน้าเดียวกัน (Google Apps Script ใน iframe) ---------- */
+  var frame = null, framePage = null, splash = $('splash');
+  function srcFor(params) {
+    params = params.slice(); params.push('app=pwa');
+    return URL0 + (URL0.indexOf('?') < 0 ? '?' : '&') + params.join('&');
+  }
+  function openApp(params, push) {
+    if (!URL_OK) { var d = $('cfgDlg'); if (d.showModal) d.showModal(); else alert(d.textContent); return; }
+    var key = params.join('&');
+    document.body.classList.add('in-app');
+    if (push) try { history.pushState({ app: key }, ''); } catch (e) { }
+    if (frame && framePage === key) return;
+    if (frame) frame.remove();
+    splash.className = 'on'; $('splashMsg').textContent = 'กำลังเปิดระบบ…';
+    var done = false;
+    frame = document.createElement('iframe'); framePage = key;
+    frame.title = NAME;
+    frame.allow = 'camera; geolocation; clipboard-write; fullscreen';
+    frame.addEventListener('load', function () {
+      done = true; splash.className = 'on hide';
+      setTimeout(function () { splash.className = ''; }, 500);
+    });
+    setTimeout(function () { if (!done) $('splashMsg').textContent = 'อินเทอร์เน็ตช้า กำลังเชื่อมต่อ Google…'; }, 6000);
+    frame.src = srcFor(params);
+    $('app').appendChild(frame);
+  }
+  function closeApp() { document.body.classList.remove('in-app'); splash.className = ''; }
+  // ปุ่มที่มี data-open = เปิดหน้าในระบบ · data-sys = เปิดหน้าระบบงาน (ประวัติ / บันทึกผล)
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-open],[data-sys]');
+    if (!b) return;
+    var sys = b.getAttribute('data-sys');
+    if (sys) openApp(['sys=' + sys].concat(b.getAttribute('data-mode') === 'record' ? ['mode=record'] : []), true);
+    else { var p = b.getAttribute('data-open'); openApp(p ? ['page=' + p] : [], true); }
+  });
+
+  /* ---------- กลุ่มระบบงาน (ตั้งค่าใน config.js > WORK_GROUPS) ---------- */
+  var ICONS = { wrench: 'i-wrench', fire: 'i-fire', shield: 'i-shield', car: 'i-car', box: 'i-box' };
+  var COLORS = { blue: 1, red: 1, violet: 1, amber: 1, green: 1 };
+  var mk = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  var icon = function (name) { var ns = 'http://www.w3.org/2000/svg', s = document.createElementNS(ns, 'svg'), u = document.createElementNS(ns, 'use'); u.setAttribute('href', '#' + name); s.appendChild(u); s.setAttribute('aria-hidden', 'true'); return s; };
+  var GROUPS = (Array.isArray(C.WORK_GROUPS) ? C.WORK_GROUPS : []).map(function (g) {
+    g = g || {};
+    return {
+      name: String(g.name || 'ระบบงาน'), desc: String(g.desc || ''),
+      icon: ICONS[g.icon] || 'i-grid', color: COLORS[g.color] ? g.color : 'blue',
+      pages: (g.pages || []).filter(function (p) { return p && /^[a-z]{2,16}$/.test(p[0]); }).map(function (p) { return [p[0], String(p[1] || p[0])]; }),
+      systems: (g.systems || []).filter(function (s) { return s && /^\d{4}$/.test(String(s[0])); }).map(function (s) { return [String(s[0]), String(s[1] || '')]; })
+    };
+  });
+  var grid = $('groups');
+  if (!GROUPS.length) grid.hidden = true;
+  GROUPS.forEach(function (g, i) {
+    var b = mk('button', 'q c-' + g.color); b.type = 'button'; b.setAttribute('data-grp', i);
+    var ic = mk('div', 'ic'); ic.appendChild(icon(g.icon)); b.appendChild(ic);
+    if (g.systems.length) b.appendChild(mk('span', 'n', g.systems.length + ' ระบบ'));
+    b.appendChild(mk('h3', '', g.name)); b.appendChild(mk('p', '', g.desc));
+    var go = mk('span', 'go', 'ดูเมนู'); go.appendChild(icon('i-arrow')); b.appendChild(go);
+    b.addEventListener('click', function () { showGroup(i, true); });
+    grid.appendChild(b);
+  });
+  var sheet = $('sheet'), lastFocus = null, curGrp = -1;
+  function showGroup(i, push) {
+    var g = GROUPS[i]; if (!g) return;
+    if (push && !(history.state && history.state.grp === i)) try { history.pushState({ grp: i }, ''); } catch (e) { }
+    if (curGrp === i && sheet.classList.contains('on')) return;
+    curGrp = i; lastFocus = document.activeElement;
+    $('shBox').className = 'sh c-' + g.color;
+    var ic = $('shIc'); ic.textContent = ''; ic.appendChild(icon(g.icon));
+    $('shName').textContent = g.name; $('shDesc').textContent = g.desc;
+    var pg = $('shPages'); pg.textContent = '';
+    if (g.pages.length) {
+      pg.appendChild(mk('h3', '', 'เมนูของงานนี้'));
+      var box = mk('div', 'pg');
+      g.pages.forEach(function (p) {
+        var b = mk('button'); b.type = 'button'; b.setAttribute('data-open', p[0]);
+        var i2 = mk('i'); i2.appendChild(icon('i-arrow')); b.appendChild(i2); b.appendChild(document.createTextNode(p[1]));
+        box.appendChild(b);
+      });
+      pg.appendChild(box);
+    }
+    var sy = $('shSys'); sy.textContent = '';
+    $('shSysH').hidden = !g.systems.length;
+    g.systems.forEach(function (s) {
+      var r = mk('div', 'srow');
+      r.appendChild(mk('code', '', s[0])); r.appendChild(mk('span', '', s[1]));
+      var v = mk('button', 'v', 'ดูประวัติ'); v.type = 'button'; v.setAttribute('data-sys', s[0]); v.setAttribute('aria-label', 'ดูประวัติ ' + s[1]);
+      var w = mk('button', 'r', 'บันทึกผล'); w.type = 'button'; w.setAttribute('data-sys', s[0]); w.setAttribute('data-mode', 'record'); w.setAttribute('aria-label', 'บันทึกผล ' + s[1]);
+      r.appendChild(v); r.appendChild(w); sy.appendChild(r);
+    });
+    sheet.classList.add('on'); document.body.classList.add('sheet-open');
+    $('shBox').querySelector('.sh-b').scrollTop = 0;
+    $('shClose').focus();
+  }
+  function hideGroup() {
+    if (!sheet.classList.contains('on')) return;
+    sheet.classList.remove('on'); document.body.classList.remove('sheet-open'); curGrp = -1;
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function closeGroup() { if (history.state && history.state.grp !== undefined) history.back(); else hideGroup(); }
+  $('shClose').addEventListener('click', closeGroup);
+  sheet.addEventListener('click', function (e) { if (e.target === sheet) closeGroup(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && sheet.classList.contains('on') && !document.body.classList.contains('in-app')) closeGroup(); });
+  // รีเฟรชหน้าขณะเปิดเมนู/ระบบอยู่: เริ่มใหม่ที่หน้าแรก
+  if (history.state && (history.state.grp !== undefined || history.state.app !== undefined)) try { history.replaceState(null, ''); } catch (e) { }
+  // ปุ่มย้อนกลับ: ออกจากระบบ → กลับหน้ารวมเมนู (ถ้าเปิดมาจากหน้านั้น) → กลับหน้าแรก
+  window.addEventListener('popstate', function (e) {
+    var st = e.state || {};
+    if (st.app === undefined) closeApp();
+    if (st.grp !== undefined) showGroup(st.grp, false); else if (st.app === undefined) hideGroup();
+  });
+
+  /* ลิงก์จากป้าย QR / ทางลัดของแอป / แอปที่ติดตั้งแล้ว → เข้าระบบทันที ไม่ผ่านหน้าแรก */
+  var q = location.search.replace(/^\?/, ''), hash = location.hash.replace(/^#/, '');
+  var pass = q ? q.split('&').filter(function (kv) { return /^(sys|eq|code|mode|items|page)=/.test(kv); }) : [];
+  if (hash && /^[a-z]{2,16}$/.test(hash) && !document.getElementById(hash) && !pass.some(function (p) { return p.indexOf('page=') === 0; })) pass.push('page=' + hash);
+  var standalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+  if (pass.length || /(^|&)launch=app(&|$)/.test(q) || standalone) openApp(pass, false);
+
+  /* ---------- แถบบนเปลี่ยนเป็นทึบเมื่อเลื่อน ---------- */
+  var top = $('top');
+  var onScroll = function () { top.classList.toggle('solid', window.scrollY > 24); };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* ---------- แท็บ ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[role="tablist"]'), function (list) {
+    var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+    var pick = function (t, focus) {
+      tabs.forEach(function (x) {
+        var on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+        $(x.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (focus) t.focus();
+      Array.prototype.forEach.call(document.querySelectorAll('#' + t.getAttribute('aria-controls') + ' .rv'), function (e) { e.classList.add('in'); });
+    };
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { pick(t); });
+      t.addEventListener('keydown', function (e) {
+        var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (d) { e.preventDefault(); pick(tabs[(i + d + tabs.length) % tabs.length], true); }
+      });
+    });
+    list._pick = pick;
+  });
+  // เลือกแท็บวิธีติดตั้งตามเครื่องที่เปิดอยู่
+  var ua = navigator.userAgent || '';
+  var dev = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) ? 'ti-ios' : /Android/.test(ua) ? 'ti-and' : 'ti-pc';
+  var il = $(dev).parentNode; il._pick($(dev));
+
+  /* ---------- ปุ่มติดตั้ง (Chrome / Edge / Android) ---------- */
+  var promptEv = null, ib = $('installBtn');
+  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); promptEv = e; ib.hidden = false; });
+  ib.addEventListener('click', function () {
+    if (!promptEv) return;
+    promptEv.prompt();
+    promptEv.userChoice.then(function (r) { promptEv = null; ib.hidden = true; if (r && r.outcome === 'accepted') toast('ติดตั้งแอปแล้ว'); });
+  });
+  window.addEventListener('appinstalled', function () { ib.hidden = true; });
+
+  /* ---------- QR และลิงก์ของหน้านี้ ---------- */
+  var pageUrl = location.origin + location.pathname.replace(/index\.html$/, '');
+  $('pageUrl').textContent = pageUrl.replace(/^https?:\/\//, '');
+  try { $('qr').innerHTML = KPIQR.svg(pageUrl, { dark: '#052430', label: 'QR ลิงก์ ' + pageUrl }); } catch (e) { $('qr').textContent = 'สร้าง QR ไม่ได้'; }
+  $('copyBtn').addEventListener('click', function () {
+    var ok = function () { toast('คัดลอกลิงก์แล้ว'); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(pageUrl).then(ok, function () { toast('คัดลอกไม่ได้ ให้กดค้างที่ลิงก์แทน', true); });
+    else {
+      var t = document.createElement('textarea'); t.value = pageUrl; document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); ok(); } catch (e) { toast('คัดลอกไม่ได้', true); }
+      t.remove();
+    }
+  });
+
+  /* ---------- ภาพเคลื่อนไหวเมื่อเลื่อนถึง ---------- */
+  var rv = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .12 });
+    Array.prototype.forEach.call(rv, function (e) { io.observe(e); });
+  } else Array.prototype.forEach.call(rv, function (e) { e.classList.add('in'); });
+
+  /* ---------- ออฟไลน์ ---------- */
+  var net = function () { $('off').style.display = navigator.onLine ? 'none' : 'block'; };
+  window.addEventListener('online', net); window.addEventListener('offline', net); net();
+
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () { });
+})();
+</script>
+</body>
+</html>
