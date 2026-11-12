@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="KPI อาคาร">
+<meta name="apple-mobile-web-app-title" content="รายงาน KPI">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet">
@@ -324,6 +324,14 @@ dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink
   .mobile .box{padding:56px 64px}.qrcard{width:270px}
 }
 body{overflow-x:clip}
+/* ชื่อหลัก: อังกฤษเด่น ไทยรอง */
+.hero h1.h1en{font-size:inherit;margin:22px 0 20px}
+.h1en .en .l,.h1en .en em{display:block;background:none;color:inherit}
+.h1en .en em{color:transparent;background:linear-gradient(100deg,#7cf7d4,#38d6f5 45%,#8db4ff);-webkit-background-clip:text;background-clip:text}
+.h1en .en{display:block;font-family:'Prompt',system-ui,sans-serif;font-weight:700;font-size:clamp(30px,2.9vw,52px);line-height:1.1;letter-spacing:-.015em;color:#fff;text-wrap:balance;background:none;-webkit-background-clip:border-box;background-clip:border-box}
+.h1en .en em{font-style:normal;background:linear-gradient(100deg,#7cf7d4,#38d6f5 45%,#8db4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.h1en .th{display:block;margin-top:14px;font:600 clamp(18px,1.9vw,25px)/1.45 var(--head);color:#bfeee8;background:none;-webkit-background-clip:border-box;background-clip:border-box;letter-spacing:0}
+@media (max-width:380px){.h1en .en{font-size:29px}}
 @media (max-width:900px){.laptop .base{margin:0 -2%}}
 @media (min-width:1900px){.wrap{width:min(1760px,100% - 160px)}.hero h1{font-size:72px}.stage{min-height:680px}}
 @media (max-width:640px){
@@ -384,8 +392,8 @@ body{overflow-x:clip}
   <section class="hero" aria-labelledby="h1">
     <div class="wrap">
       <div>
-        <span class="pill"><b>แอป</b><span class="js-org">ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม</span></span>
-        <h1 id="h1">งานบำรุงรักษา<span>& KPI อาคาร</span></h1>
+        <span class="pill"><b>แอป</b><span>งานบำรุงรักษา · ตัวชี้วัด · สแกน QR</span></span>
+        <h1 id="h1" class="h1en"><span class="en" lang="en"><span class="l">Facilities and Environmental</span> <span class="l">Management Department</span> <em>KPI Report</em></span><span class="th">รายงาน KPI ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม</span></h1>
         <p class="lead">บันทึกการตรวจเช็คด้วยการสแกน QR เห็นงานของตัวเองชัดเจน และติดตามผลตัวชี้วัดของฝ่ายได้ทันที ในแอปเดียวที่ใช้ได้ทั้งโทรศัพท์ แท็บเล็ต และคอมพิวเตอร์</p>
         <div class="cta">
           <button class="btn btn-main" type="button" data-open=""><svg><use href="#i-login"/></svg>เข้าสู่ระบบ</button>
