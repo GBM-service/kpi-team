@@ -4,7 +4,7 @@
  * ORG      = ชื่อหน่วยงาน
  */
 window.KPI_APP = {
-  APP_URL: 'https://script.google.com/macros/s/วาง-ID-ของ-Deployment-ที่นี่/exec',
+  APP_URL: 'https://script.google.com/macros/s/AKfycbygAtXDxfthdIJuRxwSx2pIvu9a66FLbx9bLW1RcbL68a4enk1UGWqsxtTARpT7XrrWcw/exec',
   APP_NAME: 'งานบำรุงรักษา & KPI อาคาร',
   ORG: 'ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม',
 
