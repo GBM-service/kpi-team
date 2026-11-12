@@ -1012,12 +1012,25 @@ dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink
     if (st2.grp !== undefined) showGroup(st2.grp, false); else if (st2.app === undefined) hideGroup();
   });
 
-  /* ลิงก์จากป้าย QR / ทางลัดของแอป / แอปที่ติดตั้งแล้ว → เข้าระบบทันที ไม่ผ่านหน้าแรก */
+  /* ลิงก์จากป้าย QR / ทางลัดของแอป (?sys= ?page= …) → เข้าระบบทันที
+   * แอปที่ติดตั้งแล้ว (เปิดจากไอคอน) → เปิดหน้าแรกนี้ก่อน แล้วค่อยกดเข้าระบบ */
   var q = location.search.replace(/^\?/, ''), hash = location.hash.replace(/^#/, '');
   var pass = q ? q.split('&').filter(function (kv) { return /^(sys|eq|code|mode|items|page)=/.test(kv); }) : [];
   if (hash && /^[a-z]{2,16}$/.test(hash) && !document.getElementById(hash) && !pass.some(function (p) { return p.indexOf('page=') === 0; })) pass.push('page=' + hash);
-  var standalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
-  if (pass.length || /(^|&)launch=app(&|$)/.test(q) || standalone) openApp(pass, false);
+  if (pass.length) openApp(pass, false);
+  if (/(^|&)launch=app(&|$)/.test(q)) try { history.replaceState(null, '', location.pathname); } catch (e) { }
+
+  /* ปุ่ม "หน้าแรก" ในระบบ (ส่งข้อความมาจาก Google Apps Script) → ออกจากระบบกลับหน้าแรกนี้ */
+  window.addEventListener('message', function (e) {
+    if (!/^https:\/\/([\w-]+\.)*(googleusercontent\.com|script\.google\.com)$/.test(e.origin)) return;
+    if (!e.data || e.data.kpi !== 'home' || !document.body.classList.contains('in-app')) return;
+    if (history.state && history.state.app !== undefined) history.back();
+    else {
+      closeApp();
+      if (location.search) try { history.replaceState(null, '', location.pathname); } catch (x) { }
+    }
+    window.scrollTo(0, 0);
+  });
 
   /* ---------- แถบบนมีเงาเมื่อเลื่อน · ไฮไลต์เมนูตามส่วนที่กำลังดู ---------- */
   var top = $('top');

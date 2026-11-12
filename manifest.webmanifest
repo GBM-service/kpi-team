@@ -5,7 +5,7 @@
   "lang": "th",
   "dir": "ltr",
   "id": "./",
-  "start_url": "./?launch=app",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone"],
