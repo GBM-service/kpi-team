@@ -1,11 +1,13 @@
 /* ตั้งค่าแอป — แก้เฉพาะไฟล์นี้
  * APP_URL  = ลิงก์ Web app ของ Google Apps Script (Deploy > Manage deployments > Web app URL ที่ลงท้ายด้วย /exec)
- * APP_NAME = ชื่อที่แสดงบนหน้าจอโหลด
+ * BRAND    = ชื่อสั้นบนแถบซ้าย/แถบบน
+ * APP_NAME = ชื่อเต็ม (ชื่อแท็บเบราว์เซอร์ และหน้าจอโหลด)
  * ORG      = ชื่อหน่วยงาน
  */
 window.KPI_APP = {
   APP_URL: 'https://script.google.com/macros/s/AKfycbygAtXDxfthdIJuRxwSx2pIvu9a66FLbx9bLW1RcbL68a4enk1UGWqsxtTARpT7XrrWcw/exec',
-  APP_NAME: 'งานบำรุงรักษา & KPI อาคาร',
+  BRAND: 'รายงาน KPI',
+  APP_NAME: 'รายงาน KPI ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม',
   ORG: 'ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม',
 
   /* กลุ่มระบบงานบนหน้าแรก — เพิ่ม/ลบ/แก้ชื่อได้ (ระวังเครื่องหมาย , และ ' ให้ครบ)

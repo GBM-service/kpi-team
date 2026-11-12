@@ -1,6 +1,6 @@
 {
-  "name": "งานบำรุงรักษา & KPI อาคาร",
-  "short_name": "KPI อาคาร",
+  "name": "รายงาน KPI ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม",
+  "short_name": "รายงาน KPI",
   "description": "ระบบงานบำรุงรักษาและ KPI ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม",
   "lang": "th",
   "dir": "ltr",
@@ -10,8 +10,8 @@
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone"],
   "orientation": "any",
-  "background_color": "#052430",
-  "theme_color": "#052430",
+  "background_color": "#0b2a43",
+  "theme_color": "#0b2a43",
   "categories": ["productivity", "business", "utilities"],
   "icons": [
     { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
