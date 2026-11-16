@@ -5,7 +5,7 @@
  * ORG      = ชื่อหน่วยงาน
  */
 window.KPI_APP = {
-  APP_URL: 'https://script.google.com/macros/s/AKfycbygAtXDxfthdIJuRxwSx2pIvu9a66FLbx9bLW1RcbL68a4enk1UGWqsxtTARpT7XrrWcw/exec',
+  APP_URL: 'https://script.google.com/macros/s/AKfycbwR3kFuAVGIoDrJ5SD3hY2gQA4GaBDhJiz4OIRs9irfLF93wRqsqDc09C0sjMB-TxCgzg/exec',
   BRAND: 'รายงาน KPI',
   APP_NAME: 'รายงาน KPI ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม',
   ORG: 'ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม',
