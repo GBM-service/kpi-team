@@ -478,6 +478,135 @@ dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink
 body.is-app .inst-only{display:none!important}
 .content{grid-template-columns:minmax(0,1fr)}
 @media (max-width:560px){.content .btn{white-space:normal;text-align:center}.hero{min-width:0}.hero>div{min-width:0}}
+
+/* ======================= รุ่น 8: น้ำเงิน–ขาว มืออาชีพ · หัวทุกส่วนแบบเดียวกัน · แท็บแคปซูล + เส้นใต้เลื่อน ======================= */
+:root{
+  --ink:#0b1f4d;--text:#14213d;--muted:#52627a;--line:#dbe4f0;--bg:#f2f6fc;
+  --blue:#1d4ed8;--blue2:#1d4ed8;--navy:#0b1f4d;--teal2:#1d4ed8;
+  --grad:linear-gradient(120deg,#1e40af 0%,#2563eb 55%,#0284c7 100%);
+  --hero:radial-gradient(700px 420px at 92% 0%,rgba(56,189,248,.35),transparent 60%),radial-gradient(560px 420px at 0% 100%,rgba(37,99,235,.55),transparent 62%),linear-gradient(140deg,#0b1f4d 0%,#13307a 52%,#1d4ed8 100%);
+  --sidebg:linear-gradient(180deg,#0b1f4d 0%,#0e2a66 58%,#0b2f5c 100%);
+  --shadow:0 1px 2px rgba(11,31,77,.06),0 14px 34px -16px rgba(11,31,77,.28);
+}
+.btn-main{box-shadow:0 10px 26px -10px rgba(29,78,216,.85),inset 0 1px 0 rgba(255,255,255,.3)}
+.nside .it.on{box-shadow:inset 3px 0 0 #60a5fa}
+.nside .lg small,.nside h4,.nside .foot p{color:#93acd6}
+.topbar .in{border-bottom:1px solid transparent}
+.facts svg{color:#93c5fd}
+.h1en .en em{background:linear-gradient(100deg,#bfdbfe,#7dd3fc 50%,#e0e7ff);-webkit-background-clip:text;background-clip:text}
+.float .ic{background:var(--grad)!important}
+.ring{background:conic-gradient(#60a5fa calc(var(--p)*1%),rgba(255,255,255,.22) 0)}
+.ring b{background:#163a8f}
+.pms .ok{background:#bfdbfe;color:#1e3a8a}
+.kt{border:1px solid var(--line)}
+.k-teal{--c:linear-gradient(90deg,#0284c7,#0ea5e9);--soft:#e0f2fe;--cc:#0369a1}
+/* ---------- หัวทุกส่วน: ไอคอน + ป้ายเล็ก + หัวข้อ + คำอธิบาย + ตัวเลขเด่น ---------- */
+.sec-h{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center;margin-bottom:24px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.sec-h .hl{width:58px;height:58px;border-radius:17px;display:grid;place-items:center;background:var(--grad);color:#fff;box-shadow:0 14px 26px -12px rgba(29,78,216,.8),inset 0 1px 0 rgba(255,255,255,.3);flex:none}
+.sec-h .hl svg{width:28px;height:28px}
+.sec-h .eyb{display:inline-flex;align-items:center;gap:6px;font:700 12.5px/1 var(--font);letter-spacing:.09em;color:#1d4ed8;background:#e8f0ff;border:1px solid #cddcfb;border-radius:99px;padding:5px 11px;margin-bottom:8px}
+.sec-h h2{font-size:clamp(22px,2.1vw,29px);color:var(--ink);display:block}
+.sec-h p{margin:6px 0 0;color:var(--muted);font-size:16px;max-width:720px}
+.hn{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.hn>div{min-width:104px;padding:11px 14px;border-radius:16px;background:linear-gradient(180deg,#f5f8ff,#eaf1ff);border:1px solid #d6e2fa;text-align:center}
+.hn b{display:block;font:700 26px/1.1 var(--head);color:#1e3a8a;font-variant-numeric:tabular-nums}
+.hn span{display:block;font-size:12.5px;color:var(--muted);margin-top:3px;white-space:nowrap}
+.tabrow{display:flex;justify-content:center;margin:0 0 26px}
+/* ---------- แท็บแคปซูล + เส้นใต้เลื่อน ---------- */
+.tabs{position:relative;display:inline-flex;gap:4px;padding:5px;border-radius:999px;background:#eaf0f9;border:1px solid #d6e0ef;box-shadow:inset 0 1px 2px rgba(11,31,77,.06)}
+.tabs button{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:11px 22px;color:#4a5b75;transition:color .25s}
+.tabs button svg{width:18px;height:18px;flex:none}
+.tabs button:hover{color:#1e3a8a}
+.tabs button[aria-selected="true"]{background:transparent;color:#1d4ed8;box-shadow:none}
+.tabs .ind{position:absolute;z-index:0;top:5px;bottom:5px;left:0;width:0;border-radius:999px;background:#fff;box-shadow:0 6px 16px -6px rgba(29,78,216,.45),0 0 0 1px rgba(29,78,216,.08);transition:transform .38s cubic-bezier(.2,.9,.3,1),width .38s cubic-bezier(.2,.9,.3,1);pointer-events:none}
+.tabs .ind::after{content:"";position:absolute;left:24%;right:24%;bottom:5px;height:3px;border-radius:3px;background:linear-gradient(90deg,#1d4ed8,#0ea5e9)}
+.tabs.noanim .ind{transition:none}
+/* ---------- การ์ดกลุ่มงาน: สีประจำกลุ่ม ---------- */
+.c-blue{--c:linear-gradient(135deg,#3b82f6,#1d4ed8);--s:rgba(29,78,216,.7);--cc:#1d4ed8;--soft:#e8f0ff;--bd:#c7d8fb}
+.k-blue{--c:linear-gradient(90deg,#1d4ed8,#3b82f6)}
+.c-red{--cc:#c2410c;--soft:#fff1ea;--bd:#fcd3c1}
+.c-violet{--cc:#6d28d9;--soft:#f3efff;--bd:#ddd2fd}
+.c-amber{--cc:#b45309;--soft:#fff7e6;--bd:#fde2a8}
+.c-green{--cc:#047857;--soft:#e7f8f1;--bd:#b7ebd6}
+.q{background:linear-gradient(180deg,var(--soft) 0%,#fff 68%);border:1px solid var(--bd,var(--line));padding:26px 20px 20px}
+.q::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:var(--c)}
+.q::after{content:"";position:absolute;right:-50px;top:-50px;width:150px;height:150px;border-radius:50%;background:var(--c);opacity:.09;pointer-events:none}
+.q:hover{background:linear-gradient(180deg,var(--soft) 0%,#fff 80%);border-color:var(--cc)}
+.q .n{background:#fff;color:var(--cc);border:1px solid var(--bd,var(--line));font-weight:700;top:18px}
+.q .go{color:var(--cc)}
+.q h3{color:var(--ink)}
+/* ---------- 4 ขั้นตอนการทำงาน ---------- */
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;counter-reset:f}
+.fs{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px 20px 20px;box-shadow:0 1px 2px rgba(11,31,77,.05);display:flex;flex-direction:column;gap:10px;transition:transform .2s,box-shadow .2s}
+.fs:hover{transform:translateY(-4px);box-shadow:0 22px 40px -20px var(--sh)}
+.fs::before{content:"";position:absolute;inset:0 0 auto;height:4px;border-radius:22px 22px 0 0;background:var(--fc)}
+.fs:not(:last-child)::after{content:"";position:absolute;top:50px;right:-17px;z-index:2;width:16px;height:16px;border-radius:50%;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d4ed8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6l6 6-6 6'/%3E%3C/svg%3E") center/12px no-repeat;box-shadow:0 0 0 1px var(--line),0 4px 10px -4px rgba(11,31,77,.35)}
+.fs .top{display:flex;align-items:center;justify-content:space-between}
+.fs .fi{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;color:#fff;background:var(--fc);box-shadow:0 12px 22px -10px var(--sh)}
+.fs .fi svg{width:26px;height:26px}
+.fs .no{font:700 30px/1 var(--head);color:#e2e9f5;letter-spacing:-.02em}
+.fs h3{font-size:19px;color:var(--ink)}
+.fs p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.6}
+.fs .demo{margin-top:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-top:6px}
+.fs .demo span{font-size:12.5px;font-weight:700;border-radius:99px;padding:4px 10px;background:var(--fs);color:var(--fk);border:1px solid var(--fb)}
+.f-1{--fc:linear-gradient(135deg,#1d4ed8,#0284c7);--fs:#e8f0ff;--fk:#1e3a8a;--fb:#c7d8fb;--sh:rgba(29,78,216,.6)}
+.f-2{--fc:linear-gradient(135deg,#16a34a,#0d9488);--fs:#e7f8ef;--fk:#166534;--fb:#b7ebcd;--sh:rgba(22,163,74,.55)}
+.f-3{--fc:linear-gradient(135deg,#dc2626,#f97316);--fs:#fff0ec;--fk:#9a3412;--fb:#fdcfbf;--sh:rgba(220,38,38,.55)}
+.f-4{--fc:linear-gradient(135deg,#4f46e5,#7c3aed);--fs:#efeefe;--fk:#3730a3;--fb:#d6d3fb;--sh:rgba(79,70,229,.55)}
+.flow-note{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin:18px 0 0;font-size:14.5px;color:var(--muted)}
+.flow-note b{color:var(--ink)}
+/* ---------- ภาพจำลอง: ช่องรายตัว · แถบสถานะ · QR ---------- */
+.umap{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;margin-top:6px}
+.umap i{aspect-ratio:1;border-radius:3px;background:#dcfce7;border:1px solid #86efac}
+.umap i.b{background:#fecaca;border-color:#ef4444}
+.umap i.n{background:#fff;border-color:#cbd5e1}
+.umap i.s{background:#fef3c7;border-color:#f59e0b}
+.it2.col{flex-wrap:wrap}
+.it2.col .umap{flex-basis:100%}
+.tgh{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:10px 12px 0}
+.tgh b{font:600 11.5px var(--head);color:var(--ink)}
+.tgh span{font-size:9.5px;font-weight:700;border-radius:99px;padding:4px 9px;color:#fff;background:#16a34a}
+.tgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;padding:8px 12px 0}
+.tgrid span{border-radius:9px;padding:6px 0;text-align:center;font-weight:700;font-size:10.5px;background:#fff;border:1.5px solid #cbd5e1;color:#334155}
+.tgrid .ok{background:#dcfce7;border-color:#22c55e;color:#166534}
+.tgrid .bad{background:#fee2e2;border-color:#ef4444;color:#991b1b}
+.tgrid .st{background:#fef3c7;border-color:#f59e0b;color:#92400e}
+.cause{margin:8px 12px 0;background:#fff;border:1.5px solid #fca5a5;border-radius:11px;padding:7px 10px;font-size:10.5px;color:#991b1b}
+.cause b{color:#7f1d1d}
+.stb{margin:10px 12px 0;border-radius:14px;padding:9px 11px;display:flex;gap:9px;align-items:center;background:#fef2f2;border:1.5px solid #fca5a5;color:#991b1b}
+.stb .d{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#dc2626;color:#fff;font-weight:700;flex:none}
+.stb b{display:block;font:600 12.5px var(--head)}
+.stb small{display:block;font-size:9.5px;color:#7f1d1d}
+.stb.ok{background:#f0fdf4;border-color:#86efac;color:#166534}.stb.ok .d{background:#16a34a}
+.pbtns{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:8px 12px 0}
+.pbtns span{border-radius:11px;padding:9px 4px;text-align:center;font-weight:700;font-size:10.5px;color:#fff;background:#16a34a;box-shadow:0 6px 12px -6px rgba(22,163,74,.8)}
+.pbtns .r{background:#dc2626;box-shadow:0 6px 12px -6px rgba(220,38,38,.8)}
+.mini-h{margin:10px 14px 0;font:600 10.5px var(--head);color:var(--muted)}
+.mini-map{padding:4px 14px 0}
+.mlg{display:flex;gap:8px;padding:4px 14px 0;font-size:8.5px;color:var(--muted)}
+.mlg i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:3px;vertical-align:-1px;background:#dcfce7;border:1px solid #86efac}
+.mlg i.b{background:#fecaca;border-color:#ef4444}.mlg i.n{background:#fff;border-color:#cbd5e1}
+.shr{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:5px;font-size:8.5px}
+.shr span{border-radius:7px;padding:3px 6px;background:#f1f5f9;border-left:3px solid #22c55e}
+.shr span.co{background:#f5f3ff;border-left-color:#7c3aed}
+/* ส่วนเปิดบนมือถือ: ตัวเลขเด่นแบบพื้นเข้ม */
+.mobile .hn{justify-content:flex-start;margin:0 0 22px}
+.mobile .hn>div{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16)}
+.mobile .hn b{color:#fff}
+.mobile .hn span{color:#bcd0f0}
+.mobile .eb{color:#93c5fd}
+@media (max-width:1180px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.fs:nth-child(2)::after{display:none}}
+@media (max-width:900px){.sec-h{grid-template-columns:auto minmax(0,1fr)}.sec-h .hn{grid-column:1/-1;justify-content:flex-start}}
+@media (max-width:560px){
+  .sec-h{gap:12px 14px;padding-bottom:16px}
+  .sec-h .hl{width:46px;height:46px;border-radius:14px}.sec-h .hl svg{width:23px;height:23px}
+  .hn{display:grid;grid-template-columns:repeat(3,1fr);width:100%}.hn>div{min-width:0;padding:9px 6px}.hn b{font-size:21px}.hn span{white-space:normal}
+  .tabs{display:flex;width:100%}.tabs button{flex:1;padding:11px 6px;font-size:14px;gap:5px;white-space:nowrap}.tabs button svg,.tabs .xl{display:none}
+  .flow{grid-template-columns:1fr;gap:12px}.fs::after{display:none}
+  .fs{display:grid;grid-template-columns:52px 1fr;gap:4px 14px;padding:16px}
+  .fs .top{grid-row:span 3;flex-direction:column;gap:6px;align-items:center}.fs .no{font-size:18px}
+  .fs .demo{grid-column:2}
+}
 </style>
 </head>
 <body>
@@ -505,6 +634,10 @@ body.is-app .inst-only{display:none!important}
   <symbol id="i-box" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></g></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
   <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></g></symbol>
+  <symbol id="i-flow" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.5 6H15a3 3 0 010 6H9a3 3 0 000 6h7.5"/></g></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L2 20h20z"/><path d="M12 10v4M12 17h.01"/></g></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 11l2 2 4-4M9 17h6"/></g></symbol>
+  <symbol id="i-pc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></g></symbol>
   <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/></g></symbol>
 </svg>
 
@@ -516,6 +649,7 @@ body.is-app .inst-only{display:none!important}
   <div class="scroll">
     <h4>หน้านี้</h4>
     <a class="it" href="#home" data-spy="home"><i><svg><use href="#i-home"/></svg></i>หน้าหลัก</a>
+    <a class="it" href="#flow" data-spy="flow"><i><svg><use href="#i-flow"/></svg></i>ขั้นตอนการทำงาน</a>
     <a class="it" href="#work" data-spy="work"><i><svg><use href="#i-grid"/></svg></i>เลือกระบบงาน</a>
     <a class="it" href="#screens" data-spy="screens"><i><svg><use href="#i-dev"/></svg></i>ตัวอย่างหน้าจอ</a>
     <a class="it" href="#install" data-spy="install"><i><svg><use href="#i-dl"/></svg></i>ติดตั้งแอป</a>
@@ -576,21 +710,22 @@ body.is-app .inst-only{display:none!important}
             <div class="apphead">
               <div class="sbar"><span>9:41</span><span>5G ▮▮▮</span></div>
               <div class="me"><span class="av">สช</span><div><small>สวัสดี · งานของฉัน</small><b>สมชาย ช่างดี</b></div><span class="ring" style="--p:72"><b>72%</b></span></div>
-              <div class="stats"><span><b>3</b>ค้าง</span><span><b>2</b>วันนี้</span><span><b>18</b>ครบ</span><span><b>1</b>ชำรุด</span></div>
+              <div class="stats"><span><b>3</b>ค้าง</span><span><b>2</b>วันนี้</span><span><b>18</b>ครบ</span><span><b>2</b>รอซ่อม</span></div>
             </div>
             <div class="list">
               <h5>ต้องทำ / ค้าง</h5>
-              <div class="it2"><div class="ic" style="background:#fef3c7">⚡</div><div class="tx"><b>เครื่องกำเนิดไฟฟ้า</b><span>รายสัปดาห์ · 6 เครื่อง</span></div><span class="tag t-now">วันนี้</span></div>
-              <div class="it2"><div class="ic" style="background:#e0f2fe">💡</div><div class="tx"><b>ไฟฉุกเฉินและป้ายทางออก</b><span>ทำแล้ว 14/20 จุด</span></div><span class="tag t-due">ค้าง</span></div>
-              <div class="it2"><div class="ic" style="background:#fee2e2">🚪</div><div class="tx"><b>ประตูหนีไฟ อาคาร B</b><span>พบชำรุด 1 บาน · รอซ่อม</span></div><span class="tag t-bad">ชำรุด</span></div>
+              <div class="it2 col"><div class="ic" style="background:#fee2e2">🧯</div><div class="tx"><b>ตู้ดับเพลิงภายในอาคาร A</b><span>ตรวจ 12/20 · ใช้ได้ 18 · เสีย 2 รอซ่อม</span></div><span class="tag t-due">ค้าง</span>
+                <div class="umap"><i></i><i></i><i></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i><i class="n"></i><i class="n"></i><i class="n"></i><i class="n"></i><i class="n"></i><i class="n"></i><i class="n"></i></div></div>
+              <div class="it2 col"><div class="ic" style="background:#ede9fe">🔔</div><div class="tx"><b>ระบบ Fire Alarm</b><span>ดูแลร่วม · ทำเอง + บริษัท</span></div><span class="tag t-now">ร่วม</span>
+                <div class="shr" style="flex-basis:100%"><span>👷 ทำเอง 8/12</span><span class="co">🏢 บริษัท รอบ Q2 ✓</span></div></div>
               <h5>ทำครบแล้ว</h5>
-              <div class="it2"><div class="ic" style="background:#dcfce7">🧯</div><div class="tx"><b>ถังดับเพลิง อาคาร A</b><span>ตรวจแล้ว 24/24 ถัง</span></div><span class="tag t-ok">ครบ</span></div>
+              <div class="it2"><div class="ic" style="background:#dbeafe">💡</div><div class="tx"><b>ไฟฉุกเฉินและป้ายทางออก</b><span>ตรวจแล้ว 24/24 จุด</span></div><span class="tag t-ok">ครบ</span></div>
             </div>
             <div class="tabbar"><span class="on"><i>🏠</i>งานของฉัน</span><span><i>📷</i>สแกน</span><span><i>📊</i>สรุป</span><span><i>☰</i>เมนู</span></div>
           </div>
         </div>
-        <div class="float f1"><div class="ic" style="background:linear-gradient(135deg,#12c2a8,#0ea5c6)"><svg width="20" height="20"><use href="#i-chart"/></svg></div><div>ทำได้ตามแผน<b>94.6%</b></div></div>
-        <div class="float f2"><div class="ic" style="background:linear-gradient(135deg,#22c55e,#10b981)"><svg width="20" height="20"><use href="#i-check"/></svg></div><div>บันทึกสำเร็จ<b>+1 ตรวจแล้ว</b></div></div>
+        <div class="float f1"><div class="ic"><svg width="20" height="20"><use href="#i-chart"/></svg></div><div>ทำได้ตามแผน<b>94.6%</b></div></div>
+        <div class="float f2"><div class="ic"><svg width="20" height="20"><use href="#i-check"/></svg></div><div>ตรวจครบทั้งอาคาร<b>+20 ตู้</b></div></div>
       </div>
     </section>
 
@@ -603,19 +738,49 @@ body.is-app .inst-only{display:none!important}
       </div>
     </section>
 
+    <section class="card rv" id="flow" data-sec="ขั้นตอนการทำงาน" aria-labelledby="h-flow">
+      <div class="sec-h">
+        <span class="hl"><svg><use href="#i-flow"/></svg></span>
+        <div><span class="eyb">วิธีทำงาน</span><h2 id="h-flow">ทำงาน 4 ขั้น จบในแอปเดียว</h2><p>จากหน้างานถึงรายงานผู้บริหาร ไม่ต้องกรอกกระดาษ ไม่ต้องพิมพ์ซ้ำ ทุกขั้นเชื่อมกันอัตโนมัติ</p></div>
+        <div class="hn"><div><b>4</b><span>ขั้นตอน</span></div><div><b>1</b><span>สแกนเปิดงาน</span></div><div><b>0</b><span>กรอกซ้ำ</span></div></div>
+      </div>
+      <ol class="flow">
+        <li class="fs f-1"><div class="top"><span class="fi"><svg><use href="#i-scan"/></svg></span><span class="no">01</span></div>
+          <h3>สแกน</h3><p>ส่อง QR ที่ป้ายอุปกรณ์ เห็นทันทีว่าตัวนี้ใช้ได้ไหม ถึงรอบตรวจหรือยัง และประวัติล่าสุด</p>
+          <div class="demo"><span>📷 FH-07</span><span>✓ ใช้ได้</span></div></li>
+        <li class="fs f-2"><div class="top"><span class="fi"><svg><use href="#i-clip"/></svg></span><span class="no">02</span></div>
+          <h3>ตรวจ</h3><p>กด "ตรวจครบทั้งหมด" ทั้งอาคารในครั้งเดียว หรือตรวจทีละตัวจาก QR — ช่องสีบอกตัวที่ตรวจแล้ว</p>
+          <div class="demo"><span>ตรวจ 20/20</span><span>อาคาร A ครบ</span></div></li>
+        <li class="fs f-3"><div class="top"><span class="fi"><svg><use href="#i-alert"/></svg></span><span class="no">03</span></div>
+          <h3>แจ้งเสีย</h3><p>แตะช่องที่ใช้ไม่ได้ ระบุสาเหตุ เข้ารายการรอซ่อมเอง ติดตามได้ว่ารออะไร จนซ่อมเสร็จ</p>
+          <div class="demo"><span>🔧 เสีย 2</span><span>รออะไหล่</span></div></li>
+        <li class="fs f-4"><div class="top"><span class="fi"><svg><use href="#i-chart"/></svg></span><span class="no">04</span></div>
+          <h3>รายงาน</h3><p>ผลเข้าสู่ KPI และสรุปผู้บริหารทันที แยกงานที่ทำเองกับงานบริษัท ดาวน์โหลด Excel ได้</p>
+          <div class="demo"><span>📊 94.6%</span><span>ทำเอง / บริษัท</span></div></li>
+      </ol>
+      <p class="flow-note">ระบบที่มีทั้งงานทำเองและบริษัทดูแล (เช่น <b>Fire Alarm</b>) ตั้งเป็น <b>"ดูแลร่วม"</b> ได้ — เจ้าหน้าที่ตรวจตามแผน บริษัทเข้าตามรอบสัญญา รายงานแยกให้</p>
+    </section>
+
     <section class="card rv" id="work" data-sec="เลือกระบบงาน" aria-labelledby="h-work">
       <div class="sec-h">
-        <div><h2 id="h-work"><span class="bd"><svg><use href="#i-grid"/></svg></span>เลือกระบบงาน</h2><p>กดที่งานของคุณเพื่อดูเมนูและระบบย่อยทั้งหมดของงานนั้น</p></div>
+        <span class="hl"><svg><use href="#i-grid"/></svg></span>
+        <div><span class="eyb">ระบบงาน</span><h2 id="h-work">เลือกระบบงาน</h2><p>กดที่งานของคุณเพื่อดูเมนูและระบบย่อยทั้งหมดของงานนั้น</p></div>
+        <div class="hn"><div><b id="nGrp">–</b><span>กลุ่มงาน</span></div><div><b id="nSys">–</b><span>ระบบย่อย</span></div><div><b id="nPg">–</b><span>เมนูลัด</span></div></div>
       </div>
       <div class="qgrid" id="groups"></div>
     </section>
 
     <section class="card rv" id="screens" data-sec="ตัวอย่างหน้าจอ" aria-labelledby="h-screens">
       <div class="sec-h">
-        <div><h2 id="h-screens"><span class="bd"><svg><use href="#i-dev"/></svg></span>ใช้งานง่ายทุกบทบาท</h2><p>หน้าจอปรับตามสิทธิ์ เจ้าหน้าที่เห็นงานของตัวเอง ผู้บริหารเห็นภาพรวมทั้งฝ่าย</p></div>
+        <span class="hl"><svg><use href="#i-dev"/></svg></span>
+        <div><span class="eyb">ตัวอย่างหน้าจอ</span><h2 id="h-screens">ใช้งานง่ายทุกบทบาท</h2><p>หน้าจอปรับตามสิทธิ์ เจ้าหน้าที่เห็นงานของตัวเอง ผู้บริหารเห็นภาพรวมทั้งฝ่าย</p></div>
+        <div class="hn"><div><b>3</b><span>มุมมอง</span></div><div><b>1 แตะ</b><span>ตรวจครบทั้งอาคาร</span></div><div><b>ทันที</b><span>ผลขึ้นรายงาน</span></div></div>
+      </div>
+      <div class="tabrow">
         <div class="tabs" role="tablist" aria-label="ตัวอย่างหน้าจอ">
-          <button role="tab" aria-selected="true" aria-controls="sc-exec" id="tb-exec">ผู้บริหาร</button>
-          <button role="tab" aria-selected="false" aria-controls="sc-field" id="tb-field" tabindex="-1">เจ้าหน้าที่หน้างาน</button>
+          <button role="tab" aria-selected="true" aria-controls="sc-exec" id="tb-exec"><svg><use href="#i-chart"/></svg>ผู้บริหาร</button>
+          <button role="tab" aria-selected="false" aria-controls="sc-field" id="tb-field" tabindex="-1"><svg><use href="#i-grid"/></svg>ตรวจนับ<span class="xl">หน้างาน</span></button>
+          <button role="tab" aria-selected="false" aria-controls="sc-scan" id="tb-scan" tabindex="-1"><svg><use href="#i-qr"/></svg>สแกน QR</button>
         </div>
       </div>
 
@@ -683,13 +848,13 @@ body.is-app .inst-only{display:none!important}
       <div role="tabpanel" id="sc-field" aria-labelledby="tb-field" hidden>
         <div class="show">
           <div class="copy">
-            <h3>สแกน แตะ บันทึก เสร็จในไม่กี่วินาที</h3>
-            <p>ติดป้าย QR ที่อุปกรณ์ เจ้าหน้าที่สแกนแล้วเห็นแผนรายเดือนและรายการตรวจของอุปกรณ์นั้นทันที กดผ่านหรือไม่ผ่านทีละข้อ ผลเข้าสู่ KPI ของฝ่ายอัตโนมัติ</p>
+            <h3>ตรวจทั้งอาคารในแตะเดียว เห็นทุกตัวเป็นช่องสี</h3>
+            <p>ตู้ดับเพลิง 20 ตู้ ไฟฉุกเฉิน 40 จุด — แยกเป็นรายตัว 1 ตัว = 1 ช่อง กด "ตรวจครบทั้งหมด" แล้วแตะเฉพาะช่องที่ใช้ไม่ได้ ระบุสาเหตุ บันทึกครั้งเดียวจบ</p>
             <ul class="ticks">
-              <li><svg><use href="#i-check"/></svg>รายการตรวจตรงกับแบบฟอร์มของแต่ละระบบ</li>
-              <li><svg><use href="#i-check"/></svg>พบชำรุดส่งเข้ารายการรอซ่อมเอง</li>
-              <li><svg><use href="#i-check"/></svg>ดูประวัติการตรวจย้อนหลังของอุปกรณ์ได้</li>
-              <li><svg><use href="#i-check"/></svg>กดปุ่ม 📷 สแกน ที่แถบล่าง หรือสแกนจากหน้านี้ได้เลย</li>
+              <li><svg><use href="#i-check"/></svg>ช่องเขียว = ตรวจแล้ว · แดง = เสีย · ขาว = ยังไม่ตรวจ</li>
+              <li><svg><use href="#i-check"/></svg>ตัวที่เสียอยู่เดิม เลือกได้ว่า "ยังเสีย" หรือ "ซ่อมแล้ว"</li>
+              <li><svg><use href="#i-check"/></svg>นับตามจำนวนจริงในทะเบียน ยอดค้างยกไปเดือนถัดไปให้เอง</li>
+              <li><svg><use href="#i-check"/></svg>รายการดูแลร่วม เห็นแยก "ทำเอง" กับ "บริษัท"</li>
             </ul>
           </div>
           <div class="dev" aria-hidden="true">
@@ -698,17 +863,56 @@ body.is-app .inst-only{display:none!important}
                 <div class="notch"></div>
                 <div class="apphead">
                   <div class="sbar"><span>9:41</span><span>5G ▮▮▮</span></div>
-                  <div class="t">🧯 ตู้ดับเพลิง FH-07</div>
+                  <div class="t">🧯 ตรวจนับ · ตู้ดับเพลิง</div>
+                  <div class="s">อาคาร A · 20 ตู้ · รอบเดือน พ.ย.</div>
+                </div>
+                <div class="tgh"><b>อาคาร A · ตรวจ 18/20</b><span>✓ ตรวจครบทั้งหมด</span></div>
+                <div class="tgrid">
+                  <span class="ok">01</span><span class="ok">02</span><span class="ok">03</span><span class="bad">04</span><span class="ok">05</span>
+                  <span class="ok">06</span><span class="ok">07</span><span class="ok">08</span><span class="ok">09</span><span class="ok">10</span>
+                  <span class="ok">11</span><span class="ok">12</span><span class="st">13</span><span class="ok">14</span><span class="ok">15</span>
+                  <span class="ok">16</span><span class="ok">17</span><span class="ok">18</span><span>19</span><span>20</span>
+                </div>
+                <div class="cause"><b>ตู้ 04:</b> สายฉีดรั่ว · <b>ตู้ 13:</b> ยังเสียจากเดิม (รออะไหล่)</div>
+                <div class="mlg"><span><i></i>ตรวจแล้ว</span><span><i class="b"></i>เสีย</span><span><i class="n"></i>ยังไม่ตรวจ</span></div>
+                <div class="recbtn">บันทึกผล 18 ตู้</div>
+                <div class="tabbar"><span class="on"><i>🏠</i>งานของฉัน</span><span><i>📷</i>สแกน</span><span><i>📊</i>สรุป</span><span><i>☰</i>เมนู</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="note">ภาพจำลองเพื่อแสดงหน้าตาระบบ ตัวเลขไม่ใช่ข้อมูลจริง</p>
+      </div>
+
+      <div role="tabpanel" id="sc-scan" aria-labelledby="tb-scan" hidden>
+        <div class="show">
+          <div class="copy">
+            <h3>สแกน QR รู้ทันทีว่าตัวนี้ใช้ได้ไหม</h3>
+            <p>ติดป้าย QR ที่อุปกรณ์ทุกตัว สแกนแล้วเห็นแถบสถานะด้านบนสุด ใช้ได้ / เสีย-รออะไร พร้อมปุ่มตรวจหรือแจ้งเสียได้จากหน้านั้นเลย</p>
+            <ul class="ticks">
+              <li><svg><use href="#i-check"/></svg>แถบสถานะ: ใช้ได้ หรือ เสีย · รออะไหล่ / รอช่าง / รอบริษัท</li>
+              <li><svg><use href="#i-check"/></svg>2 ปุ่มใหญ่: "ตรวจแล้วปกติ" และ "แจ้งเสีย"</li>
+              <li><svg><use href="#i-check"/></svg>ผังตู้อื่นในอาคารเดียวกัน เห็นว่าตัวไหนเสีย</li>
+              <li><svg><use href="#i-check"/></svg>ผู้ที่ไม่ได้เข้าระบบดูสถานะได้ ไม่เห็นชื่อผู้บันทึก</li>
+            </ul>
+          </div>
+          <div class="dev" aria-hidden="true">
+            <div class="phone">
+              <div class="scr">
+                <div class="notch"></div>
+                <div class="apphead">
+                  <div class="sbar"><span>9:41</span><span>5G ▮▮▮</span></div>
+                  <div class="t">🧯 ตู้ดับเพลิง FH-04</div>
                   <div class="s">อาคาร A ชั้น 2 · ตรวจล่าสุด 3 วันก่อน</div>
                   <div class="pms"><span class="ok">ต.ค.</span><span class="cur">พ.ย.</span><span>ธ.ค.</span><span>ม.ค.</span><span>ก.พ.</span><span>มี.ค.</span></div>
                 </div>
+                <div class="stb"><span class="d">✕</span><div><b>ใช้ไม่ได้ · รออะไหล่</b><small>สายฉีดรั่ว · แจ้งเมื่อ 12 พ.ย.</small></div></div>
+                <div class="pbtns"><span>✓ ซ่อมแล้ว / ใช้ได้</span><span class="r">🔧 แจ้งเสียเพิ่ม</span></div>
+                <div class="mini-h">ตู้อื่นในอาคาร A (20 ตู้)</div>
+                <div class="mini-map"><div class="umap"><i></i><i></i><i></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="s"></i><i></i><i></i><i></i><i></i><i></i><i class="n"></i><i class="n"></i></div></div>
                 <div class="list">
-                  <div class="it2"><div class="tx"><b>สายฉีดน้ำดับเพลิง</b><span>ไม่รั่ว ไม่ชำรุด</span></div><span class="tag t-ok">ผ่าน</span></div>
-                  <div class="it2"><div class="tx"><b>หัวฉีดและวาล์ว</b><span>เปิด–ปิดได้คล่อง</span></div><span class="tag t-ok">ผ่าน</span></div>
-                  <div class="it2"><div class="tx"><b>ป้ายและไฟส่องสว่าง</b><span>มองเห็นชัดเจน</span></div><span class="tag t-ok">ผ่าน</span></div>
-                  <div class="it2"><div class="tx"><b>ทางเข้าถึงตู้</b><span>มีของวางกีดขวาง</span></div><span class="tag t-bad">ไม่ผ่าน</span></div>
+                  <div class="it2"><div class="tx"><b>รายการตรวจ 4 ข้อ</b><span>สายฉีด · หัวฉีด · ป้าย · ทางเข้าถึง</span></div><span class="tag t-now">ตรวจ</span></div>
                 </div>
-                <div class="recbtn">บันทึกผลการตรวจ</div>
                 <div class="tabbar"><span><i>🏠</i>งานของฉัน</span><span class="on"><i>📷</i>สแกน</span><span><i>📊</i>สรุป</span><span><i>☰</i>เมนู</span></div>
               </div>
             </div>
@@ -720,11 +924,15 @@ body.is-app .inst-only{display:none!important}
 
     <section class="card rv" id="install" data-sec="ติดตั้งแอป" aria-labelledby="h-install">
       <div class="sec-h">
-        <div><h2 id="h-install"><span class="bd"><svg><use href="#i-dl"/></svg></span>ติดตั้งไว้บนหน้าจอ เปิดได้ในแตะเดียว</h2><p>ไม่ต้องโหลดจาก App Store หรือ Play Store ไม่กินพื้นที่ และอัปเดตเองทุกครั้งที่เปิด</p></div>
+        <span class="hl"><svg><use href="#i-dl"/></svg></span>
+        <div><span class="eyb">ติดตั้งแอป</span><h2 id="h-install">ติดตั้งไว้บนหน้าจอ เปิดได้ในแตะเดียว</h2><p>ไม่ต้องโหลดจาก App Store หรือ Play Store ไม่กินพื้นที่ และอัปเดตเองทุกครั้งที่เปิด</p></div>
+        <div class="hn"><div><b>3</b><span>ขั้นตอน</span></div><div><b>0 บาท</b><span>ไม่ผ่าน Store</span></div><div><b>อัตโนมัติ</b><span>อัปเดตเอง</span></div></div>
+      </div>
+      <div class="tabrow">
         <div class="tabs" role="tablist" aria-label="เลือกอุปกรณ์">
-          <button role="tab" aria-selected="true" aria-controls="in-ios" id="ti-ios">iPhone / iPad</button>
-          <button role="tab" aria-selected="false" aria-controls="in-and" id="ti-and" tabindex="-1">Android</button>
-          <button role="tab" aria-selected="false" aria-controls="in-pc" id="ti-pc" tabindex="-1">คอมพิวเตอร์</button>
+          <button role="tab" aria-selected="true" aria-controls="in-ios" id="ti-ios"><svg><use href="#i-dev"/></svg>iPhone / iPad</button>
+          <button role="tab" aria-selected="false" aria-controls="in-and" id="ti-and" tabindex="-1"><svg><use href="#i-dev"/></svg>Android</button>
+          <button role="tab" aria-selected="false" aria-controls="in-pc" id="ti-pc" tabindex="-1"><svg><use href="#i-pc"/></svg>คอมพิวเตอร์</button>
         </div>
       </div>
       <div role="tabpanel" id="in-ios" aria-labelledby="ti-ios"><div class="igrid">
@@ -751,6 +959,7 @@ body.is-app .inst-only{display:none!important}
         <span class="eb">เปิดบนมือถือ</span>
         <h2 id="h-mobile">สแกนเพื่อเปิดหน้านี้บนโทรศัพท์</h2>
         <p>เปิดกล้องโทรศัพท์แล้วส่องที่ QR จากนั้นติดตั้งแอปตามขั้นตอนด้านบน หรือคัดลอกลิงก์ส่งให้เพื่อนร่วมงาน</p>
+        <div class="hn"><div><b>QR</b><span>ส่องเปิดได้ทันที</span></div><div><b>LINE</b><span>ส่งลิงก์ให้ทีม</span></div><div><b>A4</b><span>โปสเตอร์ติดผนัง</span></div></div>
         <div class="link"><code id="pageUrl">…</code><button class="btn btn-glass" type="button" id="copyBtn"><svg><use href="#i-copy"/></svg>คัดลอกลิงก์</button><button class="btn btn-glass" type="button" id="copyLine" title="ลิงก์นี้เมื่อกดใน LINE จะเปิดใน Safari/Chrome ทันที (ติดตั้งแอปได้)"><svg><use href="#i-copy"/></svg>คัดลอกลิงก์สำหรับส่งใน LINE</button></div>
       </div>
     </section>
@@ -922,6 +1131,11 @@ body.is-app .inst-only{display:none!important}
     b.addEventListener('click', function () { showGroup(i, true); });
     grid.appendChild(b);
   });
+  // รุ่น 8: ตัวเลขเด่นของหัวส่วน "เลือกระบบงาน"
+  (function () {
+    var ns = 0, np = 0; GROUPS.forEach(function (g) { ns += g.systems.length; np += g.pages.length; });
+    if ($('nGrp')) $('nGrp').textContent = GROUPS.length; if ($('nSys')) $('nSys').textContent = ns; if ($('nPg')) $('nPg').textContent = np;
+  })();
   var sheet = $('sheet'), lastFocus = null, curGrp = -1;
   function showGroup(i, push) {
     var g = GROUPS[i]; if (!g) return;
@@ -1114,13 +1328,21 @@ body.is-app .inst-only{display:none!important}
   /* ---------- แท็บ ---------- */
   each('[role="tablist"]', function (list) {
     var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+    // รุ่น 8: แคปซูลสีขาว + เส้นใต้ เลื่อนตามแท็บที่เลือก
+    var ind = document.createElement('span'); ind.className = 'ind'; ind.setAttribute('aria-hidden', 'true'); list.insertBefore(ind, list.firstChild);
+    var cur = tabs[0];
+    var place = function () { if (!cur || !cur.offsetWidth) return; ind.style.width = cur.offsetWidth + 'px'; ind.style.transform = 'translateX(' + (cur.offsetLeft - 5) + 'px)'; ind.style.left = '5px'; };
     var pick = function (t, focus) {
       tabs.forEach(function (x) {
         var on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
         $(x.getAttribute('aria-controls')).hidden = !on;
       });
+      cur = t; place();
       if (focus) t.focus();
     };
+    list.classList.add('noanim'); place(); setTimeout(function () { place(); list.classList.remove('noanim'); }, 60);
+    window.addEventListener('resize', place);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
     tabs.forEach(function (t, i) {
       t.addEventListener('click', function () { pick(t); });
       t.addEventListener('keydown', function (e) {
