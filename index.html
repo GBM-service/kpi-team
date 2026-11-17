@@ -427,6 +427,57 @@ dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink
 }
 @media (max-width:380px){.h1en .en{font-size:28px}.phone{width:min(290px,100%)}.qrcard{width:min(240px,100%)}.mbrand small{display:none}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+
+/* ---------- รุ่น 7: ผู้เข้าระบบ · ปุ่มเข้าด้วยอีเมล · ติดตั้งแอปทุกระบบ ---------- */
+.who{position:relative}
+.who>button{display:flex;align-items:center;gap:10px;border:1.5px solid #c7d6ea;background:#fff;border-radius:999px;padding:4px 14px 4px 4px;min-height:44px;max-width:300px;text-align:left}
+.who .av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--grad);color:#fff;font:600 14px var(--head);flex:none}
+.who .nm{min-width:0;line-height:1.25}
+.who .nm b{display:block;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
+.who .nm small{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.who .rb{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:0 7px;background:#e0e7ff;color:#3730a3;margin-left:4px}
+.who .rb.admin{background:#fee2e2;color:#b91c1c}.who .rb.exec{background:#dcfce7;color:#166534}
+.who.past>button{border-style:dashed;opacity:.9}
+.who .menu{position:absolute;right:0;top:calc(100% + 8px);z-index:60;width:280px;background:#fff;border-radius:16px;box-shadow:0 24px 60px -18px rgba(2,6,23,.45);border:1px solid var(--line);padding:14px;display:grid;gap:8px;color:var(--text)}
+.who .menu[hidden]{display:none}
+.who .menu p{margin:0 0 4px;font-size:13.5px;color:var(--muted);word-break:break-all}
+.who .menu .btn{width:100%;min-height:42px;padding:9px 14px;font-size:15px}
+.btn-mail{color:#7c2d12;background:#fff7ed;border:1.5px solid #fed7aa}
+.btn-mail:hover{border-color:#fb923c}
+@media (max-width:1023px){
+  .who>button{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4);padding:3px;min-height:42px}
+  .who .nm{display:none}
+  .who .av{background:#fff;color:var(--blue2)}
+  .who .menu{position:fixed;left:12px;right:12px;top:calc(70px + env(safe-area-inset-top,0px));width:auto}
+}
+/* แถบเตือนเปิดจากแอปแชต (LINE / Facebook) */
+#iab{position:sticky;top:0;z-index:70;background:#fff7ed;border-bottom:2px solid #fb923c;color:#7c2d12;padding:12px 16px calc(12px);font-size:15px;line-height:1.5;display:none}
+#iab.on{display:block}
+#iab b{display:block;font-size:16px;margin-bottom:4px}
+#iab .r{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+#iab .btn{min-height:42px;padding:9px 14px;font-size:15px}
+/* หน้าต่างติดตั้งแอป */
+#inst{position:fixed;inset:0;z-index:95;background:rgba(2,6,23,.55);display:none;align-items:center;justify-content:center;padding:20px}
+#inst.on{display:flex}
+#inst .ib2{width:min(460px,100%);max-height:calc(100vh - 32px);overflow:auto;background:#fff;border-radius:26px;box-shadow:0 40px 80px -20px rgba(0,0,0,.6);animation:up .3s cubic-bezier(.2,.9,.3,1)}
+#inst .hd{display:flex;gap:14px;align-items:center;padding:20px 20px 14px;border-bottom:1px solid var(--line)}
+#inst .hd img{width:58px;height:58px;border-radius:15px;box-shadow:0 8px 18px -8px rgba(2,6,23,.5);flex:none}
+#inst .hd b{display:block;font:600 19px/1.3 var(--head);color:var(--ink)}
+#inst .hd small{display:block;color:var(--muted);font-size:13.5px}
+#inst .bd{padding:16px 20px 20px;display:grid;gap:12px}
+#inst ol{margin:0;padding:0;list-style:none;display:grid;gap:10px;counter-reset:s}
+#inst li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;background:#f5f8fc;border-radius:14px;padding:12px;font-size:15.5px;line-height:1.5;counter-increment:s}
+#inst li::before{content:counter(s);width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--grad);color:#fff;font:600 16px var(--head)}
+#inst .key{display:inline-flex;align-items:center;gap:4px;vertical-align:middle}
+#inst .bd>.btn{width:100%}
+#inst .note{font-size:13.5px;color:var(--muted);margin:0}
+#inst .x{border:0;background:none;color:var(--muted);font-size:15px;padding:8px;min-height:40px;width:100%}
+#inst .arrow{position:fixed;left:50%;bottom:calc(8px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);color:#fff;font:600 15px var(--head);text-align:center;animation:bob 1.2s ease-in-out infinite;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+@keyframes bob{50%{transform:translate(-50%,6px)}}
+@media (max-width:560px){#inst{padding:0;align-items:flex-end}#inst .ib2{border-radius:26px 26px 0 0;max-height:92vh;padding-bottom:env(safe-area-inset-bottom,0px)}}
+body.is-app .inst-only{display:none!important}
+.content{grid-template-columns:minmax(0,1fr)}
+@media (max-width:560px){.content .btn{white-space:normal;text-align:center}.hero{min-width:0}.hero>div{min-width:0}}
 </style>
 </head>
 <body>
@@ -457,6 +508,7 @@ dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink
   <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/></g></symbol>
 </svg>
 
+<div id="iab" role="alert"></div>
 <!-- แถบซ้าย -->
 <aside class="nside" id="side" aria-label="เมนูหลัก">
   <a class="lg" href="#home"><img src="icons/icon.svg" alt="" width="44" height="44"><span><b class="js-brand">รายงาน KPI</b><small class="js-org">ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม</small></span></a>
@@ -477,6 +529,7 @@ dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink
   </div>
   <div class="foot">
     <button class="btn btn-main" type="button" data-open=""><svg><use href="#i-login"/></svg>เข้าสู่ระบบ</button>
+    <button class="btn btn-mail" type="button" data-login="email" style="margin-top:8px;min-height:42px;padding:9px 14px;font-size:15px">✉ ผู้ดูแล / ผู้บริหาร (อีเมล)</button>
     <p>ข้อมูลทั้งหมดเก็บในระบบของฝ่าย · ต้องต่ออินเทอร์เน็ตเพื่อใช้งาน</p>
   </div>
 </aside>
@@ -489,9 +542,12 @@ dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink
       <a class="mbrand" href="#home"><img src="icons/icon.svg" alt="" width="36" height="36"><span><b class="js-brand">รายงาน KPI</b><small class="js-org">ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม</small></span></a>
       <div class="ttl"><b id="secTitle">หน้าหลัก</b><small id="today"></small></div>
       <span class="sp"></span>
+      <button class="btn btn-line dsk inst-only" type="button" data-install=""><svg><use href="#i-dl"/></svg>ติดตั้งแอป</button>
       <button class="btn btn-line dsk" type="button" data-scan=""><svg><use href="#i-scan"/></svg>สแกน QR</button>
-      <button class="btn btn-main dsk" type="button" data-open=""><svg><use href="#i-login"/></svg>เข้าสู่ระบบ</button>
-      <button class="btn btn-white mb" type="button" data-open=""><svg><use href="#i-login"/></svg>เข้าระบบ</button>
+      <button class="btn btn-mail dsk js-out" type="button" data-login="email" title="เจ้าของระบบ / ผู้ดูแลระบบ / ผู้บริหาร: เข้าด้วยอีเมล + รหัสเข้าใช้">✉ ผู้ดูแล / ผู้บริหาร</button>
+      <button class="btn btn-main dsk js-out" type="button" data-open=""><svg><use href="#i-login"/></svg>เข้าสู่ระบบ</button>
+      <div class="who" id="who" hidden></div>
+      <button class="btn btn-white mb js-out" type="button" data-open=""><svg><use href="#i-login"/></svg>เข้าระบบ</button>
     </div>
   </header>
 
@@ -503,8 +559,9 @@ dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink
         <p class="lead">บันทึกการตรวจเช็คด้วยการสแกน QR เห็นงานของตัวเองชัดเจน และติดตามผลตัวชี้วัดของฝ่ายได้ทันที ใช้ได้ทั้งโทรศัพท์ แท็บเล็ต และคอมพิวเตอร์</p>
         <div class="cta">
           <button class="btn btn-white" type="button" data-open=""><svg><use href="#i-login"/></svg>เข้าสู่ระบบ</button>
+          <button class="btn btn-glass" type="button" data-login="email">✉ ผู้ดูแล / ผู้บริหาร (อีเมล)</button>
           <button class="btn btn-glass" type="button" data-scan=""><svg><use href="#i-scan"/></svg>สแกน QR</button>
-          <a class="btn btn-glass" href="#install"><svg><use href="#i-dl"/></svg>ติดตั้งเป็นแอป</a>
+          <button class="btn btn-glass inst-only" type="button" data-install=""><svg><use href="#i-dl"/></svg>ติดตั้งเป็นแอป</button>
         </div>
         <ul class="facts">
           <li><i><svg><use href="#i-qr"/></svg></i>สแกน QR บันทึกงาน</li>
@@ -685,7 +742,7 @@ dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink
         <div class="step"><div class="n">2</div><h3>กดไอคอนติดตั้ง</h3><p>คลิกไอคอน <span class="key"><svg><use href="#i-dl"/></svg>ติดตั้ง</span> ท้ายช่องที่อยู่เว็บ</p></div>
         <div class="step"><div class="n">3</div><h3>เปิดจากเดสก์ท็อป</h3><p>แอปจะมีไอคอนบนเดสก์ท็อปและเมนูเริ่ม เปิดเป็นหน้าต่างของตัวเอง</p></div>
       </div></div>
-      <div class="ibar"><button class="btn btn-main" id="installBtn" type="button" hidden><svg><use href="#i-dl"/></svg>ติดตั้งแอปบนเครื่องนี้</button></div>
+      <div class="ibar"><button class="btn btn-main inst-only" id="installBtn" type="button" data-install=""><svg><use href="#i-dl"/></svg>ติดตั้งแอปบนเครื่องนี้ (ทำให้อัตโนมัติ / บอกขั้นตอนตามเครื่อง)</button> <a class="btn btn-line" href="poster.html" target="_blank" rel="noopener" style="margin-left:8px">🖨 โปสเตอร์ A4 ติดตั้งแอป (พร้อม QR)</a></div>
     </section>
 
     <section class="mobile rv" id="mobile" data-sec="เปิดบนมือถือ" aria-labelledby="h-mobile">
@@ -694,7 +751,7 @@ dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink
         <span class="eb">เปิดบนมือถือ</span>
         <h2 id="h-mobile">สแกนเพื่อเปิดหน้านี้บนโทรศัพท์</h2>
         <p>เปิดกล้องโทรศัพท์แล้วส่องที่ QR จากนั้นติดตั้งแอปตามขั้นตอนด้านบน หรือคัดลอกลิงก์ส่งให้เพื่อนร่วมงาน</p>
-        <div class="link"><code id="pageUrl">…</code><button class="btn btn-glass" type="button" id="copyBtn"><svg><use href="#i-copy"/></svg>คัดลอกลิงก์</button></div>
+        <div class="link"><code id="pageUrl">…</code><button class="btn btn-glass" type="button" id="copyBtn"><svg><use href="#i-copy"/></svg>คัดลอกลิงก์</button><button class="btn btn-glass" type="button" id="copyLine" title="ลิงก์นี้เมื่อกดใน LINE จะเปิดใน Safari/Chrome ทันที (ติดตั้งแอปได้)"><svg><use href="#i-copy"/></svg>คัดลอกลิงก์สำหรับส่งใน LINE</button></div>
       </div>
     </section>
   </main>
@@ -740,6 +797,10 @@ dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink
   </div>
 </div>
 
+<div id="inst" role="dialog" aria-modal="true" aria-labelledby="instH"><div class="ib2">
+  <div class="hd"><img src="icons/icon-192.png" alt=""><div><b id="instH">ติดตั้งแอป รายงาน KPI</b><small id="instSub">เปิดได้จากไอคอนบนหน้าจอ ไม่ต้องโหลดจาก Store</small></div></div>
+  <div class="bd" id="instBody"></div>
+</div></div>
 <div id="app" aria-live="polite"></div>
 <div id="splash" role="status" aria-live="polite">
   <img src="icons/icon.svg" alt="">
@@ -807,8 +868,10 @@ dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink
   function closeApp() { document.body.classList.remove('in-app'); splash.className = ''; }
   // data-open = เปิดหน้าในระบบ · data-sys = เปิดหน้าระบบงาน · data-scan = เปิดกล้องสแกน
   document.addEventListener('click', function (e) {
-    var b = e.target.closest && e.target.closest('[data-open],[data-sys],[data-scan]');
+    var b = e.target.closest && e.target.closest('[data-open],[data-sys],[data-scan],[data-login],[data-install]');
     if (!b) return;
+    if (b.hasAttribute('data-install')) { closeNav(); openInstall(true); return; }
+    if (b.hasAttribute('data-login')) { closeNav(); loginEmail(); return; }
     if (b.hasAttribute('data-scan')) { closeNav(); openScan(); return; }
     var sys = b.getAttribute('data-sys');
     if (sys) openApp(['sys=' + sys].concat(b.getAttribute('data-mode') === 'record' ? ['mode=record'] : []), true);
@@ -1072,29 +1135,164 @@ dialog code{background:#eef5f7;border-radius:6px;padding:1px 6px;color:var(--ink
   var dev = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) ? 'ti-ios' : /Android/.test(ua) ? 'ti-and' : 'ti-pc';
   $(dev).parentNode._pick($(dev));
 
-  /* ---------- ปุ่มติดตั้ง (Chrome / Edge / Android) ---------- */
-  var promptEv = null, ib = $('installBtn');
-  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); promptEv = e; ib.hidden = false; });
-  ib.addEventListener('click', function () {
-    if (!promptEv) return;
-    promptEv.prompt();
-    promptEv.userChoice.then(function (r) { promptEv = null; ib.hidden = true; if (r && r.outcome === 'accepted') toast('ติดตั้งแอปแล้ว'); });
+  /* ---------- รุ่น 7: ติดตั้งแอปทุกระบบ ----------
+   * Chrome / Edge / Samsung (Android, Windows, Mac, ChromeOS) → ปุ่มเดียวติดตั้งให้เลย (beforeinstallprompt)
+   * iPhone / iPad / Mac Safari / Firefox → บอกขั้นตอนเฉพาะเครื่องและเบราว์เซอร์ที่เปิดอยู่ */
+  var promptEv = null;
+  var standalone = (window.matchMedia && (matchMedia('(display-mode: standalone)').matches || matchMedia('(display-mode: window-controls-overlay)').matches)) || navigator.standalone === true;
+  if (standalone) document.body.classList.add('is-app');
+  var isIOS = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  var isAnd = /Android/.test(ua), isMac = /Macintosh/.test(ua) && !isIOS, isWin = /Windows/.test(ua);
+  var br = /\bLine\//i.test(ua) ? 'line' : /FBAN|FBAV|FB_IAB|FBIOS|Instagram|Messenger/i.test(ua) ? 'fb' : /SamsungBrowser/.test(ua) ? 'samsung' : /EdgiOS|EdgA|Edg\//.test(ua) ? 'edge' :
+    /FxiOS|Firefox\//.test(ua) ? 'firefox' : /CriOS|Chrome\//.test(ua) ? 'chrome' : /Safari\//.test(ua) ? 'safari' : 'other';
+  var IC_SHARE = '<span class="key"><svg width="18" height="18"><use href="#i-share"/></svg><b>แชร์</b></span>';
+  var IC_PLUS = '<span class="key"><svg width="18" height="18"><use href="#i-plus"/></svg><b>เพิ่มไปยังหน้าจอโฮม</b></span>';
+  var IC_DOTS = '<span class="key"><svg width="18" height="18"><use href="#i-dots"/></svg><b>เมนู</b></span>';
+  function li(a) { return '<ol>' + a.map(function (x) { return '<li><span>' + x + '</span></li>'; }).join('') + '</ol>'; }
+  function instGuide() {
+    if (standalone) return { sub: 'เครื่องนี้ติดตั้งแอปแล้ว', html: '<p class="note">กำลังใช้งานในแอปที่ติดตั้งแล้ว ✓ ไม่ต้องทำอะไรเพิ่ม</p>' };
+    if (br === 'line' || br === 'fb') return { sub: 'ต้องเปิดใน ' + (isIOS ? 'Safari' : 'Chrome') + ' ก่อน', html: li([
+      'หน้านี้เปิดอยู่ใน' + (br === 'line' ? ' LINE' : 'แอป Facebook') + ' ซึ่งติดตั้งแอปไม่ได้',
+      'กดปุ่ม <b>เปิดใน ' + (isIOS ? 'Safari' : 'Chrome') + '</b> ด้านล่าง (หรือแตะ ⋯ มุมบน แล้วเลือก <b>เปิดในเบราว์เซอร์</b>)',
+      'เมื่อเปิดใน ' + (isIOS ? 'Safari' : 'Chrome') + ' แล้ว กด <b>ติดตั้งแอป</b> อีกครั้ง']) + '<button class="btn btn-main" type="button" id="instExt">เปิดใน ' + (isIOS ? 'Safari' : 'Chrome') + '</button>' };
+    if (promptEv) return { sub: 'กดปุ่มเดียว ติดตั้งให้อัตโนมัติ', html: '<button class="btn btn-main" type="button" id="instGo"><svg><use href="#i-dl"/></svg>ติดตั้งเลย</button>' +
+      '<p class="note">แอปจะอยู่' + (isAnd ? 'บนหน้าจอหลักและในรายการแอป' : 'ในเมนู Start / Launchpad และปักหมุดที่แถบงานได้') + ' · เปิดเป็นหน้าต่างของตัวเอง</p>', go: 1 };
+    if (isIOS) {
+      if (br === 'safari') return { sub: 'iPhone / iPad · Safari', html: li(['แตะ ' + IC_SHARE + ' ที่แถบล่างของ Safari (iPad: มุมขวาบน)', 'เลื่อนลงแล้วแตะ ' + IC_PLUS, 'แตะ <b>เพิ่ม</b> มุมขวาบน — ไอคอน "รายงาน KPI" จะอยู่บนหน้าจอโฮม']) + '<div class="arrow" aria-hidden="true">กดปุ่มแชร์ที่ด้านล่าง ↓</div>', arrow: 1 };
+      return { sub: 'iPhone / iPad · ' + (br === 'chrome' ? 'Chrome' : br === 'edge' ? 'Edge' : 'เบราว์เซอร์นี้'), html: li(['แตะ ' + IC_SHARE + ' ที่ช่องที่อยู่เว็บด้านบน (iOS 16.4 ขึ้นไป)', 'เลือก ' + IC_PLUS, 'ถ้าไม่มีเมนูนี้ ให้คัดลอกลิงก์แล้วเปิดใน <b>Safari</b> แทน']) + '<button class="btn btn-line" type="button" id="instCopy"><svg><use href="#i-copy"/></svg>คัดลอกลิงก์ไปเปิดใน Safari</button>' };
+    }
+    if (isAnd) {
+      if (br === 'samsung') return { sub: 'Android · Samsung Internet', html: li(['แตะ <b>☰ เมนู</b> ที่แถบล่าง', 'เลือก <b>เพิ่มหน้าลงใน</b> › <b>หน้าจอหลัก</b>', 'แตะ <b>เพิ่ม</b>']) };
+      if (br === 'firefox') return { sub: 'Android · Firefox', html: li(['แตะ ' + IC_DOTS + ' มุมขวา', 'เลือก <b>ติดตั้ง</b> หรือ <b>เพิ่มลงในหน้าจอหลัก</b>', 'แตะ <b>เพิ่ม</b>']) };
+      return { sub: 'Android · Chrome', html: li(['แตะ ' + IC_DOTS + ' มุมขวาบนของ Chrome', 'เลือก <b>ติดตั้งแอป</b> หรือ <b>เพิ่มลงในหน้าจอหลัก</b>', 'แตะ <b>ติดตั้ง</b> — ไอคอนจะอยู่บนหน้าจอหลัก']) };
+    }
+    if (isMac && br === 'safari') return { sub: 'Mac · Safari 17 ขึ้นไป', html: li(['คลิกเมนู <b>ไฟล์</b> (File) บนแถบเมนูด้านบน', 'เลือก <b>เพิ่มไปยัง Dock…</b> (Add to Dock)', 'คลิก <b>เพิ่ม</b> — เปิดจาก Dock หรือ Launchpad ได้']) };
+    if (br === 'firefox') return { sub: 'Firefox ติดตั้งแอปไม่ได้', html: li(['เปิดลิงก์หน้านี้ใน <b>Microsoft Edge</b> หรือ <b>Google Chrome</b>', 'กด <b>ติดตั้งแอป</b> อีกครั้ง']) + (isWin ? '<button class="btn btn-line" type="button" id="instUrl"><svg><use href="#i-dl"/></svg>หรือ ดาวน์โหลดทางลัดไว้บนเดสก์ท็อป</button>' : '') + '<button class="btn btn-line" type="button" id="instCopy"><svg><use href="#i-copy"/></svg>คัดลอกลิงก์</button>' };
+    if (br === 'edge') return { sub: 'คอมพิวเตอร์ · Microsoft Edge', html: li(['คลิก <b>⋯</b> มุมขวาบน', 'เลือก <b>แอป</b> › <b>ติดตั้งไซต์นี้เป็นแอป</b>', 'คลิก <b>ติดตั้ง</b> — แอปจะอยู่ในเมนู Start ปักหมุดที่แถบงานได้']) + '<p class="note">ถ้าเมนูขึ้น "เปิดในแอป" แปลว่าเครื่องนี้ติดตั้งแล้ว</p>' };
+    return { sub: 'คอมพิวเตอร์ · Google Chrome', html: li(['คลิกไอคอน <b>ติดตั้ง</b> (จอมีลูกศรลง) ท้ายช่องที่อยู่เว็บ หรือ <b>⋮</b> › <b>บันทึกและแชร์</b> › <b>ติดตั้งหน้าเว็บเป็นแอป</b>', 'คลิก <b>ติดตั้ง</b>', 'แอปจะอยู่ในเมนู Start / Launchpad และสร้างไอคอนบนเดสก์ท็อป']) + (isWin ? '<button class="btn btn-line" type="button" id="instUrl"><svg><use href="#i-dl"/></svg>หรือ ดาวน์โหลดทางลัดไว้บนเดสก์ท็อป</button>' : '') };
+  }
+  function closeInstall() { $('inst').classList.remove('on'); }
+  function openInstall(userAsked) {
+    var g = instGuide(), b = $('instBody');
+    $('instSub').textContent = g.sub;
+    b.innerHTML = g.html + '<button class="x" type="button" id="instX">' + (userAsked ? 'ปิด' : 'ไม่ใช่ตอนนี้') + '</button>';
+    $('inst').classList.add('on');
+    $('instX').onclick = function () { closeInstall(); if (!userAsked) try { localStorage.setItem('kpi_inst_skip', String(Date.now())); } catch (e) { } };
+    if ($('instGo')) $('instGo').onclick = function () {
+      if (!promptEv) { openInstall(true); return; }
+      promptEv.prompt();
+      promptEv.userChoice.then(function (r) { promptEv = null; closeInstall(); if (r && r.outcome === 'accepted') toast('ติดตั้งแอปแล้ว เปิดได้จากไอคอน รายงาน KPI'); });
+    };
+    if ($('instExt')) $('instExt').onclick = openOutside;
+    if ($('instCopy')) $('instCopy').onclick = function () { copyText(pageUrl); };
+    if ($('instUrl')) $('instUrl').onclick = function () {
+      var t = '[InternetShortcut]\r\nURL=' + pageUrl + '\r\n';
+      var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([t], { type: 'application/internet-shortcut' })); a.download = BRAND + '.url';
+      document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+      toast('ดาวน์โหลดแล้ว ย้ายไฟล์ ' + BRAND + '.url ไปไว้บนเดสก์ท็อป');
+    };
+  }
+  $('inst').addEventListener('click', function (e) { if (e.target === $('inst')) closeInstall(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeInstall(); });
+  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); promptEv = e; if ($('inst').classList.contains('on')) openInstall(true); });
+  window.addEventListener('appinstalled', function () { promptEv = null; closeInstall(); document.body.classList.add('is-app'); toast('ติดตั้งแอปแล้ว'); });
+  // มือถือ: เสนอติดตั้งเองหนึ่งครั้ง (ไม่ใช่ตอนนี้ = ไม่ถามอีก 14 วัน) · ไม่ถามเมื่อเปิดจากป้าย QR / เปิดระบบอยู่
+  setTimeout(function () {
+    if (standalone || !(isIOS || isAnd) || document.body.classList.contains('in-app') || br === 'line' || br === 'fb') return;
+    var s = 0; try { s = Number(localStorage.getItem('kpi_inst_skip') || 0); } catch (e) { }
+    if (Date.now() - s < 14 * 864e5) return;
+    openInstall(false);
+  }, 5000);
+
+  /* ---------- เปิดจาก LINE / Facebook → พาไปเปิดในเบราว์เซอร์จริง (ติดตั้งแอปและจำการเข้าระบบได้) ---------- */
+  function extUrl() {
+    var u = location.href.replace(/#.*$/, '');
+    return u + (u.indexOf('?') < 0 ? '?' : '&') + 'openExternalBrowser=1' + location.hash;
+  }
+  function openOutside() {
+    if (br === 'line') { location.href = extUrl(); return; }
+    if (isAnd) { location.href = 'intent://' + location.href.replace(/^https?:\/\//, '') + '#Intent;scheme=https;package=com.android.chrome;end'; return; }
+    copyText(pageUrl); toast('คัดลอกลิงก์แล้ว แตะ ⋯ แล้วเลือก "เปิดใน Safari" หรือวางลิงก์ใน Safari');
+  }
+  if (br === 'line' || br === 'fb') {
+    var iab = $('iab');
+    iab.innerHTML = '<b>คุณเปิดหน้านี้จาก' + (br === 'line' ? ' LINE' : 'แอป Facebook') + '</b>ติดตั้งแอปและจำการเข้าสู่ระบบไม่ได้ในนี้ กรุณาเปิดใน ' + (isIOS ? 'Safari' : 'Chrome') +
+      '<div class="r"><button class="btn btn-main" type="button" id="iabGo">เปิดใน ' + (isIOS ? 'Safari' : 'Chrome') + '</button><button class="btn btn-line" type="button" id="iabCopy">คัดลอกลิงก์</button><button class="btn btn-line" type="button" id="iabX">ใช้ในนี้ต่อ</button></div>';
+    iab.classList.add('on');
+    $('iabGo').onclick = openOutside; $('iabCopy').onclick = function () { copyText(pageUrl); }; $('iabX').onclick = function () { iab.classList.remove('on'); };
+    // LINE: พาออกไปเบราว์เซอร์อัตโนมัติครั้งแรก (LINE รองรับ openExternalBrowser=1)
+    if (br === 'line' && !/[?&]openExternalBrowser=1/.test(location.search)) {
+      var tried = false; try { tried = sessionStorage.getItem('kpi_ext') === '1'; sessionStorage.setItem('kpi_ext', '1'); } catch (e) { }
+      if (!tried) location.replace(extUrl());
+    }
+  }
+
+  /* ---------- ผู้เข้าระบบ (ข้อความจากระบบในกรอบ) · เข้าด้วยอีเมล · ออกจากระบบ ---------- */
+  var WHO = null;
+  try { WHO = JSON.parse(localStorage.getItem('kpi_who') || 'null'); if (WHO) WHO.past = 1; } catch (e) { }
+  function initials(n) { n = String(n || '').replace(/^(นาย|นางสาว|นาง|น\.ส\.|ดร\.|Mr\.?|Ms\.?|Mrs\.?)\s*/i, '').trim(); return n ? n.slice(0, 2) : '👤'; }
+  function esc(s) { return String(s || '').replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function drawWho() {
+    var w = $('who'), on = !!(WHO && WHO.name);
+    each('.js-out', function (b) { b.hidden = on && !WHO.past; });
+    if (!on) { w.hidden = true; w.innerHTML = ''; return; }
+    w.hidden = false; w.classList.toggle('past', !!WHO.past);
+    var rc = WHO.role === 'admin' ? 'admin' : WHO.role === 'exec' ? 'exec' : '';
+    w.innerHTML = '<button type="button" aria-haspopup="true" aria-expanded="false" title="' + esc(WHO.name) + '"><span class="av">' + esc(initials(WHO.name)) + '</span><span class="nm"><b>' + esc(WHO.name) +
+      '</b><small>' + (WHO.past ? 'เข้าระบบล่าสุด' : 'กำลังเข้าระบบ') + '<span class="rb ' + rc + '">' + esc(WHO.role_text || '') + '</span></small></span></button>' +
+      '<div class="menu" hidden><b>' + esc(WHO.name) + ' <span class="rb ' + rc + '">' + esc(WHO.role_text || '') + '</span></b>' + (WHO.email ? '<p>✉ ' + esc(WHO.email) + '</p>' : '') +
+      (WHO.past ? '<p>ข้อมูลจากการเข้าระบบครั้งก่อนบนเครื่องนี้</p>' : '') +
+      '<button class="btn btn-main" type="button" data-open="">เปิดระบบ</button>' +
+      '<button class="btn btn-mail" type="button" id="whoSwitch">✉ เปลี่ยนเป็นผู้ดูแล / ผู้บริหาร</button>' +
+      '<button class="btn btn-line" type="button" id="whoOut">ออกจากระบบ</button></div>';
+    var btn = w.firstChild, menu = w.lastChild;
+    btn.onclick = function (e) { e.stopPropagation(); menu.hidden = !menu.hidden; btn.setAttribute('aria-expanded', String(!menu.hidden)); };
+    $('whoOut').onclick = function () { menu.hidden = true; logoutAll(); };
+    $('whoSwitch').onclick = function () { menu.hidden = true; loginEmail(true); };
+  }
+  document.addEventListener('click', function (e) { var w = $('who'), m = w && w.querySelector('.menu'); if (m && !m.hidden && !w.contains(e.target)) m.hidden = true; });
+  function bcast(msg) { // ส่งถึงหน้าระบบที่ซ้อนอยู่ในกรอบของ Google (2–3 ชั้น)
+    (function walk(win, d) { try { win.postMessage(msg, '*'); } catch (e) { } if (d > 3) return; try { for (var i = 0; i < win.length; i++) walk(win.frames[i], d + 1); } catch (e) { } })(frame && frame.contentWindow, 0);
+  }
+  function logoutAll() {
+    WHO = null; try { localStorage.removeItem('kpi_who'); } catch (e) { } drawWho();
+    if (frame) { bcast({ kpi: 'logout' }); toast('ออกจากระบบแล้ว'); }
+    else { openApp([], true); setTimeout(function () { bcast({ kpi: 'logout' }); }, 4000); }
+  }
+  function loginEmail(force) {
+    if (WHO && !WHO.past && WHO.name && !force) { if (!confirm('ตอนนี้เข้าระบบเป็น ' + WHO.name + ' อยู่\nออกจากระบบแล้วเข้าด้วยอีเมล (ผู้ดูแล / ผู้บริหาร)?')) return; }
+    if (frame) bcast({ kpi: 'logout' });
+    var go = function () { if (frame && framePage === 'login=email') { frame.remove(); frame = null; } openApp(['login=email'], true); setTimeout(function () { bcast({ kpi: 'login', mode: 'email' }); }, 2500); };
+    if (frame) setTimeout(go, 700); else go();
+  }
+  window.addEventListener('message', function (e) {
+    if (!/^https:\/\/([\w-]+\.)*(googleusercontent\.com|script\.google\.com)$/.test(e.origin)) return;
+    var d = e.data; if (!d || d.kpi !== 'user') return;
+    if (d.signed && d.name) {
+      var keepEmail = d.email || (WHO && WHO.name === d.name ? WHO.email : '');
+      WHO = { name: d.name, role: d.role, role_text: d.role_text, email: keepEmail || '' };
+      try { localStorage.setItem('kpi_who', JSON.stringify({ name: WHO.name, role: WHO.role, role_text: WHO.role_text })); } catch (x) { }
+    } else { WHO = null; try { localStorage.removeItem('kpi_who'); } catch (x) { } }
+    drawWho();
   });
-  window.addEventListener('appinstalled', function () { ib.hidden = true; });
+  drawWho();
 
   /* ---------- QR และลิงก์ของหน้านี้ ---------- */
   var pageUrl = location.origin + location.pathname.replace(/index\.html$/, '');
   $('pageUrl').textContent = pageUrl.replace(/^https?:\/\//, '');
   try { $('qr').innerHTML = KPIQR.svg(pageUrl, { dark: '#0b2a43', label: 'QR ลิงก์ ' + pageUrl }); } catch (e) { $('qr').textContent = 'สร้าง QR ไม่ได้'; }
-  $('copyBtn').addEventListener('click', function () {
-    var ok = function () { toast('คัดลอกลิงก์แล้ว'); };
-    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(pageUrl).then(ok, function () { toast('คัดลอกไม่ได้ ให้กดค้างที่ลิงก์แทน', true); });
+  function copyText(s, msg) {
+    var ok = function () { toast(msg || 'คัดลอกลิงก์แล้ว'); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(s).then(ok, function () { toast('คัดลอกไม่ได้ ให้กดค้างที่ลิงก์แทน', true); });
     else {
-      var t = document.createElement('textarea'); t.value = pageUrl; document.body.appendChild(t); t.select();
+      var t = document.createElement('textarea'); t.value = s; document.body.appendChild(t); t.select();
       try { document.execCommand('copy'); ok(); } catch (e) { toast('คัดลอกไม่ได้', true); }
       t.remove();
     }
-  });
+  }
+  $('copyBtn').addEventListener('click', function () { copyText(pageUrl); });
+  // ลิงก์สำหรับ LINE: กดใน LINE แล้วเปิดใน Safari / Chrome ทันที (ติดตั้งแอปได้ จำการเข้าระบบได้)
+  $('copyLine').addEventListener('click', function () { copyText(pageUrl + '?openExternalBrowser=1', 'คัดลอกลิงก์สำหรับ LINE แล้ว วางในแชต LINE ได้เลย'); });
 
   /* ---------- ภาพเคลื่อนไหวเมื่อเลื่อนถึง ---------- */
   var rv = document.querySelectorAll('.rv');

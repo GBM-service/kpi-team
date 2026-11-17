@@ -13,6 +13,8 @@
   "background_color": "#0b2a43",
   "theme_color": "#0b2a43",
   "categories": ["productivity", "business", "utilities"],
+  "prefer_related_applications": false,
+  "launch_handler": { "client_mode": ["navigate-existing", "auto"] },
   "icons": [
     { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
     { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },

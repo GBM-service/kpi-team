@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>โปสเตอร์ ติดตั้งแอป รายงาน KPI (A4)</title>
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* โปสเตอร์ A4 แนวตั้ง "ติดตั้งแอปใน 3 ขั้นตอน" · QR สร้างจากลิงก์ของหน้านี้เอง (ไม่ต้องแก้ไฟล์เมื่อเปลี่ยนลิงก์) */
+@page{size:A4 portrait;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;background:#cfd8e3;font-family:'Noto Sans Thai',system-ui,sans-serif;color:#0f2a3d;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;padding:12px;background:#0b2a43;color:#fff;font-size:15px}
+.bar button{font:600 16px 'Prompt',sans-serif;border:0;border-radius:12px;padding:10px 20px;background:linear-gradient(120deg,#12c2a8,#0ea5c6 45%,#2563eb);color:#fff;cursor:pointer}
+.bar small{opacity:.8}
+.page{width:210mm;height:297mm;margin:16px auto;background:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 50px -20px rgba(0,0,0,.5)}
+.hd{background:radial-gradient(420px 260px at 92% 0%,rgba(34,211,238,.45),transparent 62%),linear-gradient(135deg,#0b5f86 0%,#1b4fc9 62%,#3046d6 100%);color:#fff;padding:9mm 12mm 8mm;display:flex;gap:6mm;align-items:center}
+.hd img{width:26mm;height:26mm;border-radius:7mm;box-shadow:0 6mm 12mm -5mm rgba(0,0,0,.55);flex:none;background:#fff}
+.hd small{display:block;font-size:4.2mm;opacity:.88;letter-spacing:.02em}
+.hd h1{margin:.5mm 0 1mm;font:700 11mm/1.08 'Prompt',sans-serif}
+.hd p{margin:0;font-size:4.1mm;opacity:.95}
+.mid{display:grid;grid-template-columns:72mm 1fr;gap:7mm;padding:7mm 12mm 4mm;align-items:center}
+.qr{background:#fff;border:1.4mm solid #0b2a43;border-radius:7mm;padding:4mm;text-align:center}
+.qr svg{width:100%;height:auto;display:block}
+.qr b{display:block;font:600 4.4mm 'Prompt',sans-serif;margin-top:2mm}
+.why h2{margin:0 0 2.5mm;font:700 7mm/1.2 'Prompt',sans-serif;color:#1b4fc9}
+.why ul{margin:0;padding:0;list-style:none;display:grid;gap:2mm;font-size:4.3mm;line-height:1.4}
+.why li{display:flex;gap:3mm;align-items:flex-start}
+.why li i{font-style:normal;width:8mm;height:8mm;border-radius:2.6mm;display:grid;place-items:center;background:#e0f2fe;flex:none;font-size:5mm}
+.url{margin-top:3mm;font:600 4mm ui-monospace,Consolas,monospace;color:#334155;word-break:break-all;background:#f1f5f9;border-radius:2.5mm;padding:2mm 3mm}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;padding:3mm 12mm 0}
+.col{border-radius:5mm;padding:4mm 3.5mm;border-top:2.2mm solid var(--c);background:var(--b)}
+.col h3{margin:0 0 .5mm;font:700 5.2mm/1.2 'Prompt',sans-serif;color:var(--c);display:flex;gap:2mm;align-items:center}
+.col .sub{font-size:3.5mm;color:#475569;margin:0 0 2.5mm}
+.col ol{margin:0;padding:0;list-style:none;display:grid;gap:2mm;counter-reset:s}
+.col li{counter-increment:s;display:grid;grid-template-columns:7mm 1fr;gap:2mm;font-size:3.75mm;line-height:1.4;background:#fff;border-radius:3mm;padding:2.2mm 2.2mm}
+.col li::before{content:counter(s);width:7mm;height:7mm;border-radius:2mm;display:grid;place-items:center;background:var(--c);color:#fff;font:700 4.6mm 'Prompt',sans-serif}
+.k{display:inline;font-weight:700;background:#fff;border:.35mm solid #cbd5e1;border-radius:1.6mm;padding:0 1mm}
+.ios{--c:#0f172a;--b:#f1f5f9}.and{--c:#15803d;--b:#ecfdf5}.pc{--c:#1d4ed8;--b:#eff6ff}
+.tips{display:grid;grid-template-columns:1fr 1fr;gap:4mm;padding:4mm 12mm 0}
+.tip{border-radius:4mm;padding:3mm 4mm;font-size:3.7mm;line-height:1.45;display:flex;gap:3mm;align-items:flex-start}
+.tip div>b:first-child{display:block;font:700 4.6mm 'Prompt',sans-serif;margin-bottom:.6mm}
+.tip i{font-style:normal;font-size:7mm;line-height:1}
+.line{background:#fff7ed;color:#7c2d12;border:.4mm solid #fdba74}
+.adm{background:#fef2f2;color:#7f1d1d;border:.4mm solid #fca5a5}
+.ft{margin-top:auto;padding:4mm 12mm 6mm;display:flex;justify-content:space-between;align-items:flex-end;gap:6mm;font-size:3.6mm;color:#475569}
+.ft b{color:#0f2a3d;font-size:4mm}
+@media print{html,body{background:#fff}.bar{display:none}.page{margin:0;box-shadow:none}}
+@media screen and (max-width:820px){.page{transform-origin:top left;transform:scale(calc((100vw - 8px)/210mm));margin:8px 4px calc((297mm * ((100vw - 8px)/210mm)) - 297mm)}}
+</style>
+</head>
+<body>
+<div class="bar"><button type="button" onclick="window.print()">🖨 พิมพ์ / บันทึกเป็น PDF (A4)</button><small>ตั้งค่าพิมพ์: กระดาษ A4 · ขอบ ไม่มี · ติ๊ก "กราฟิกพื้นหลัง"</small></div>
+<div class="page">
+  <div class="hd">
+    <img src="icons/icon-192.png" alt="">
+    <div>
+      <small class="js-org">ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม</small>
+      <h1>ติดตั้งแอป <span class="js-brand">รายงาน KPI</span><br>ใน 3 ขั้นตอน</h1>
+      <p>ใช้ได้ทั้ง iPhone · Android · คอมพิวเตอร์ · ไม่ต้องโหลดจาก Store</p>
+    </div>
+  </div>
+
+  <div class="mid">
+    <div class="qr"><div id="qr"></div><b>📷 สแกนด้วยกล้องมือถือ</b></div>
+    <div class="why">
+      <h2>สแกน แล้วกด “ติดตั้งแอป”</h2>
+      <ul>
+        <li><i>👷</i><span>เห็น <b>งานของฉัน</b> งานค้าง และผลงานของตัวเอง</span></li>
+        <li><i>📷</i><span>สแกน QR ป้ายอุปกรณ์ <b>บันทึกผลตรวจได้ทันที</b></span></li>
+        <li><i>📊</i><span>ผลนับเข้า KPI ของฝ่ายอัตโนมัติ</span></li>
+        <li><i>🔄</i><span>อัปเดตเองทุกครั้งที่เปิด ไม่กินพื้นที่เครื่อง</span></li>
+      </ul>
+      <div class="url" id="url">…</div>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="col ios">
+      <h3>📱 iPhone / iPad</h3>
+      <p class="sub">ต้องเปิดด้วย <b>Safari</b></p>
+      <ol>
+        <li><span>สแกน QR แล้วเปิดใน <b>Safari</b></span></li>
+        <li><span>แตะ <span class="k">⬆ แชร์</span> ที่แถบล่าง</span></li>
+        <li><span>เลือก <span class="k">➕ เพิ่มไปยังหน้าจอโฮม</span> › <b>เพิ่ม</b></span></li>
+      </ol>
+    </div>
+    <div class="col and">
+      <h3>🤖 Android</h3>
+      <p class="sub">เปิดด้วย <b>Chrome</b></p>
+      <ol>
+        <li><span>สแกน QR แล้วเปิดใน <b>Chrome</b></span></li>
+        <li><span>กดปุ่ม <span class="k">ติดตั้งเลย</span> ที่ขึ้นมา (หรือ <span class="k">⋮</span> › ติดตั้งแอป)</span></li>
+        <li><span>แตะ <b>ติดตั้ง</b> — ไอคอนอยู่บนหน้าจอหลัก</span></li>
+      </ol>
+    </div>
+    <div class="col pc">
+      <h3>💻 คอมพิวเตอร์</h3>
+      <p class="sub">ใช้ <b>Chrome</b> หรือ <b>Edge</b></p>
+      <ol>
+        <li><span>เปิดลิงก์ด้านบน</span></li>
+        <li><span>คลิก <span class="k">⬇ ติดตั้งแอป</span> มุมขวาบนของหน้า</span></li>
+        <li><span>คลิก <b>ติดตั้งเลย</b> — ไอคอนอยู่ในเมนู Start / Dock</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="tips">
+    <div class="tip line"><i>💬</i><div><b>ได้ลิงก์จาก LINE?</b>แตะลิงก์แล้วระบบพาไปเปิดใน Safari / Chrome ให้ ถ้ายังอยู่ใน LINE กด <b>"เปิดใน Safari/Chrome"</b> ที่แถบสีส้ม</div></div>
+    <div class="tip adm"><i>✉</i><div><b>ผู้ดูแลระบบ / ผู้บริหาร</b>กดปุ่ม <b>"✉ ผู้ดูแล / ผู้บริหาร"</b> แล้วใส่อีเมล + รหัสเข้าใช้ · เจ้าหน้าที่ใช้รหัส 7 หลัก + เลขบัตร</div></div>
+  </div>
+
+  <div class="ft">
+    <div><b>เข้าสู่ระบบครั้งแรก</b> ขอรหัส 7 หลักและลงทะเบียนเลขบัตรประชาชนได้ที่ผู้ดูแลระบบ<br>iPhone: หลังติดตั้งแอป เข้าสู่ระบบในแอปอีก 1 ครั้ง</div>
+    <div style="text-align:right"><b class="js-brand">รายงาน KPI</b><br><span class="js-org">ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม</span></div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="qr.js"></script>
+<script>
+(function () {
+  var C = window.KPI_APP || {};
+  Array.prototype.forEach.call(document.querySelectorAll('.js-org'), function (e) { if (C.ORG) e.textContent = C.ORG; });
+  Array.prototype.forEach.call(document.querySelectorAll('.js-brand'), function (e) { if (C.BRAND) e.textContent = C.BRAND; });
+  // ลิงก์หน้าแรกของแอป = โฟลเดอร์เดียวกับไฟล์นี้ · ทดสอบในเครื่องได้ด้วย poster.html?url=https://...
+  var m = /[?&]url=([^&]+)/.exec(location.search), u = m ? decodeURIComponent(m[1]) : '';
+  if (!/^https:\/\//.test(u)) u = location.origin + location.pathname.replace(/[^\/]*$/, '');
+  var ok = /^https:\/\//.test(u);
+  document.getElementById('url').textContent = ok ? u.replace(/^https:\/\//, '') : '⚠ เปิดไฟล์นี้จากหน้า GitHub (ลิงก์ https) เพื่อให้ QR ถูกต้อง';
+  try { document.getElementById('qr').innerHTML = KPIQR.svg(ok ? u : 'https://github.com', { dark: '#0b2a43', label: 'QR ลิงก์ ' + u }); } catch (e) { document.getElementById('qr').textContent = 'สร้าง QR ไม่ได้'; }
+  if (!ok) document.getElementById('qr').style.opacity = '.15';
+})();
+</script>
+</body>
+</html>
