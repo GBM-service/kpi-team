@@ -607,6 +607,17 @@ body.is-app .inst-only{display:none!important}
   .fs .top{grid-row:span 3;flex-direction:column;gap:6px;align-items:center}.fs .no{font-size:18px}
   .fs .demo{grid-column:2}
 }
+/* รุ่น 42k: สีประจำหน้า (ตรงกับสีแท็บในระบบ) — แต่ละปุ่มสีสดแยกกันชัดเจน */
+.kt[data-open="mywork"]{--c:linear-gradient(100deg,#0284c7,#7c3aed);--soft:#eaf2ff;--cc:#0369a1}
+.kt[data-open="exec"]{--c:linear-gradient(100deg,#1d4ed8,#9333ea);--soft:#eef0ff;--cc:#4338ca}
+.kt[data-open="asset"]{--c:linear-gradient(100deg,#e11d48,#f97316);--soft:#fff0ec;--cc:#be123c}
+.kt[data-scan]{--c:linear-gradient(100deg,#059669,#14b8a6);--soft:#e3fbf3;--cc:#047857}
+.nside .it[data-open] i,.nside .it[data-scan] i{background:var(--ic,rgba(255,255,255,.07));box-shadow:0 6px 14px -6px var(--icc,transparent)}
+.nside .it[data-open="mywork"]{--ic:linear-gradient(135deg,#0284c7,#7c3aed);--icc:#7c3aed}
+.nside .it[data-open="exec"]{--ic:linear-gradient(135deg,#1d4ed8,#9333ea);--icc:#9333ea}
+.nside .it[data-open="asset"]{--ic:linear-gradient(135deg,#e11d48,#f97316);--icc:#f97316}
+.nside .it[data-open="field"]{--ic:linear-gradient(135deg,#65a30d,#0d9488);--icc:#0d9488}
+.nside .it[data-scan]{--ic:linear-gradient(135deg,#059669,#14b8a6);--icc:#14b8a6}
 </style>
 </head>
 <body>
