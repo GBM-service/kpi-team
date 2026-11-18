@@ -619,6 +619,57 @@ body.is-app .inst-only{display:none!important}
 .nside .it[data-open="field"]{--ic:linear-gradient(135deg,#65a30d,#0d9488);--icc:#0d9488}
 .nside .it[data-scan]{--ic:linear-gradient(135deg,#059669,#14b8a6);--icc:#14b8a6}
 </style>
+<!-- รุ่น 47: เมนูสีเต็มแบบโปร่งใส (กระจกฝ้า) ทุกเมนู · มือถือไม่มีแถบบน (ใช้แถบล่าง) -->
+<style>
+/* สีประจำเมนู [--c1, --c2] */
+.nside .it{--c1:#3b82f6;--c2:#22d3ee}
+.nside .it[data-spy="home"]{--c1:#2563eb;--c2:#06b6d4}
+.nside .it[data-spy="flow"]{--c1:#7c3aed;--c2:#db2777}
+.nside .it[data-spy="work"]{--c1:#0891b2;--c2:#3b82f6}
+.nside .it[data-spy="screens"]{--c1:#d97706;--c2:#f43f5e}
+.nside .it[data-spy="install"]{--c1:#16a34a;--c2:#65a30d}
+.nside .it[data-spy="mobile"]{--c1:#0f766e;--c2:#0891b2}
+.nside .it[data-open="mywork"]{--c1:#0284c7;--c2:#7c3aed}
+.nside .it[data-open="exec"]{--c1:#1d4ed8;--c2:#9333ea}
+.nside .it[data-open="asset"]{--c1:#e11d48;--c2:#f97316}
+.nside .it[data-open="field"]{--c1:#65a30d;--c2:#0d9488}
+.nside .it[data-scan]{--c1:#059669;--c2:#14b8a6}
+.nside .it{margin:5px 0;background:linear-gradient(100deg,color-mix(in srgb,var(--c1) 26%,transparent),color-mix(in srgb,var(--c2) 14%,transparent));border:1px solid color-mix(in srgb,var(--c1) 38%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 1px 0 rgba(255,255,255,.1);color:#eef4fb}
+.nside .it i{background:linear-gradient(135deg,var(--c1),var(--c2))!important;color:#fff;box-shadow:0 6px 14px -6px var(--c2)!important}
+.nside .it:hover{background:linear-gradient(100deg,color-mix(in srgb,var(--c1) 42%,transparent),color-mix(in srgb,var(--c2) 26%,transparent));color:#fff}
+.nside .it.on{background:linear-gradient(100deg,color-mix(in srgb,var(--c1) 88%,transparent),color-mix(in srgb,var(--c2) 72%,transparent));border-color:color-mix(in srgb,var(--c1) 70%,#fff);color:#fff;font-weight:600;box-shadow:0 12px 26px -14px var(--c1),inset 0 1px 0 rgba(255,255,255,.32)}
+.nside .it.on i{background:rgba(255,255,255,.24)!important;box-shadow:none!important}
+.nside .it .ar{opacity:.7}
+.whoM[hidden]{display:none!important}
+@media (min-width:1024px){.whoM{display:none!important}}
+@media (max-width:1023px){
+  /* แถบบนเอาออก — ปุ่ม ☰ เมนู / เข้าระบบ / ผู้เข้าระบบ อยู่ที่แถบล่างแล้ว */
+  .topbar{display:none!important}
+  .hero{padding-top:calc(26px + env(safe-area-inset-top,0px))}
+  #iab.on{top:env(safe-area-inset-top,0px)}
+  /* แถบล่าง: กระจกฝ้า · แต่ละปุ่มมีสีของตัวเอง */
+  .tbar{background:rgba(255,255,255,.74);-webkit-backdrop-filter:blur(18px) saturate(1.6);backdrop-filter:blur(18px) saturate(1.6);border-top:1px solid rgba(148,163,184,.35)}
+  .tbar>a,.tbar>button{--c1:#2563eb;--c2:#06b6d4;color:color-mix(in srgb,var(--c1) 72%,#334155)}
+  .tbar>a[data-spy="home"]{--c1:#2563eb;--c2:#06b6d4}
+  .tbar>.scan{--c1:#059669;--c2:#14b8a6}
+  .tbar>#tbWho{--c1:#0284c7;--c2:#7c3aed}
+  .tbar>#menuBtn2{--c1:#475569;--c2:#0ea5e9}
+  .tbar>a>svg,.tbar>button:not(.scan)>svg{box-sizing:content-box;width:22px;height:22px;padding:5px 12px;border-radius:13px;background:linear-gradient(135deg,color-mix(in srgb,var(--c1) 20%,transparent),color-mix(in srgb,var(--c2) 22%,transparent));color:var(--c1);border:1px solid color-mix(in srgb,var(--c1) 30%,transparent)}
+  .tbar .on>svg{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;border-color:transparent;box-shadow:0 8px 18px -8px var(--c2);filter:none}
+  .tbar .on{color:var(--c1)}
+  .tbar .scan i{background:linear-gradient(135deg,var(--c1),var(--c2))}
+  .tbar .tav{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;font:700 13px var(--head);box-shadow:0 8px 18px -8px var(--c2);border:2px solid #fff}
+  .tbar #tbWho.me{color:var(--c1)}
+  /* เมนูผู้เข้าระบบ (เปิดจากแถบล่าง) */
+  .whoM{position:fixed;left:0;right:0;bottom:calc(var(--tb) + env(safe-area-inset-bottom,0px));z-index:60;padding:0 12px 10px}
+  .whoM .menu{background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-radius:20px;box-shadow:0 -12px 50px -14px rgba(2,6,23,.5);border:1px solid var(--line);padding:16px;display:grid;gap:8px;color:var(--text);animation:up .22s ease-out}
+  .whoM .menu>b{font-size:16px;color:var(--ink)}
+  .whoM .menu p{margin:0 0 4px;font-size:13.5px;color:var(--muted);word-break:break-all}
+  .whoM .menu .btn{width:100%;min-height:44px;padding:9px 14px;font-size:15px}
+  .whoM .rb{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:0 7px;background:#e0e7ff;color:#3730a3;margin-left:4px}
+  .whoM .rb.admin{background:#fee2e2;color:#b91c1c}.whoM .rb.exec{background:#dcfce7;color:#166534}
+}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -983,9 +1034,11 @@ body.is-app .inst-only{display:none!important}
 <nav class="tbar" aria-label="เมนูลัด">
   <a href="#home" data-spy="home"><svg><use href="#i-home"/></svg>หน้าหลัก</a>
   <button type="button" class="scan" data-scan=""><i><svg><use href="#i-scan"/></svg></i>สแกน</button>
-  <button type="button" data-open=""><svg><use href="#i-login"/></svg>เข้าระบบ</button>
+  <button type="button" id="tbWho" data-open=""><svg><use href="#i-login"/></svg>เข้าระบบ</button>
   <button type="button" id="menuBtn2" aria-controls="side"><svg><use href="#i-menu"/></svg>เมนู</button>
 </nav>
+<!-- รุ่น 47: มือถือไม่มีแถบบน — เมนูผู้เข้าระบบเปิดจากปุ่มในแถบล่าง -->
+<div id="whoM" class="whoM" hidden></div>
 
 <div id="sheet" role="dialog" aria-modal="true" aria-labelledby="shName">
   <div class="sh" id="shBox">
@@ -1466,24 +1519,40 @@ body.is-app .inst-only{display:none!important}
   function initials(n) { n = String(n || '').replace(/^(นาย|นางสาว|นาง|น\.ส\.|ดร\.|Mr\.?|Ms\.?|Mrs\.?)\s*/i, '').trim(); return n ? n.slice(0, 2) : '👤'; }
   function esc(s) { return String(s || '').replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function drawWho() {
-    var w = $('who'), on = !!(WHO && WHO.name);
+    var w = $('who'), on = !!(WHO && WHO.name), wm = $('whoM'), tb = $('tbWho');
     each('.js-out', function (b) { b.hidden = on && !WHO.past; });
-    if (!on) { w.hidden = true; w.innerHTML = ''; return; }
+    if (!on) {
+      w.hidden = true; w.innerHTML = ''; wm.hidden = true; wm.innerHTML = '';
+      if (tb) { tb.setAttribute('data-open', ''); tb.onclick = null; tb.classList.remove('me'); tb.innerHTML = '<svg><use href="#i-login"/></svg>เข้าระบบ'; }
+      return;
+    }
     w.hidden = false; w.classList.toggle('past', !!WHO.past);
     var rc = WHO.role === 'admin' ? 'admin' : WHO.role === 'exec' ? 'exec' : '';
-    w.innerHTML = '<button type="button" aria-haspopup="true" aria-expanded="false" title="' + esc(WHO.name) + '"><span class="av">' + esc(initials(WHO.name)) + '</span><span class="nm"><b>' + esc(WHO.name) +
-      '</b><small>' + (WHO.past ? 'เข้าระบบล่าสุด' : 'กำลังเข้าระบบ') + '<span class="rb ' + rc + '">' + esc(WHO.role_text || '') + '</span></small></span></button>' +
-      '<div class="menu" hidden><b>' + esc(WHO.name) + ' <span class="rb ' + rc + '">' + esc(WHO.role_text || '') + '</span></b>' + (WHO.email ? '<p>✉ ' + esc(WHO.email) + '</p>' : '') +
+    var inner = '<b>' + esc(WHO.name) + ' <span class="rb ' + rc + '">' + esc(WHO.role_text || '') + '</span></b>' + (WHO.email ? '<p>✉ ' + esc(WHO.email) + '</p>' : '') +
       (WHO.past ? '<p>ข้อมูลจากการเข้าระบบครั้งก่อนบนเครื่องนี้</p>' : '') +
       '<button class="btn btn-main" type="button" data-open="">เปิดระบบ</button>' +
-      '<button class="btn btn-mail" type="button" id="whoSwitch">✉ เปลี่ยนเป็นผู้ดูแล / ผู้บริหาร</button>' +
-      '<button class="btn btn-line" type="button" id="whoOut">ออกจากระบบ</button></div>';
+      '<button class="btn btn-mail js-whoSwitch" type="button">✉ เปลี่ยนเป็นผู้ดูแล / ผู้บริหาร</button>' +
+      '<button class="btn btn-line js-whoOut" type="button">ออกจากระบบ</button>';
+    w.innerHTML = '<button type="button" aria-haspopup="true" aria-expanded="false" title="' + esc(WHO.name) + '"><span class="av">' + esc(initials(WHO.name)) + '</span><span class="nm"><b>' + esc(WHO.name) +
+      '</b><small>' + (WHO.past ? 'เข้าระบบล่าสุด' : 'กำลังเข้าระบบ') + '<span class="rb ' + rc + '">' + esc(WHO.role_text || '') + '</span></small></span></button>' +
+      '<div class="menu" hidden>' + inner + '</div>';
+    // รุ่น 47: มือถือ — ปุ่มที่ 3 ของแถบล่างเป็นรูปผู้เข้าระบบ กดแล้วเปิดเมนูเดียวกันจากด้านล่าง
+    wm.innerHTML = '<div class="menu" role="dialog" aria-label="ผู้เข้าระบบ">' + inner + '</div>';
+    if (tb) {
+      tb.removeAttribute('data-open'); tb.classList.add('me');
+      tb.innerHTML = '<span class="tav">' + esc(initials(WHO.name)) + '</span>' + esc(String(WHO.name).replace(/^(นาย|นางสาว|นาง|น\.ส\.)\s*/, '').split(/\s+/)[0] || 'ฉัน');
+      tb.onclick = function (e) { e.stopPropagation(); wm.hidden = !wm.hidden; };
+    }
     var btn = w.firstChild, menu = w.lastChild;
     btn.onclick = function (e) { e.stopPropagation(); menu.hidden = !menu.hidden; btn.setAttribute('aria-expanded', String(!menu.hidden)); };
-    $('whoOut').onclick = function () { menu.hidden = true; logoutAll(); };
-    $('whoSwitch').onclick = function () { menu.hidden = true; loginEmail(true); };
+    each('.js-whoOut', function (b) { b.onclick = function () { menu.hidden = true; wm.hidden = true; logoutAll(); }; });
+    each('.js-whoSwitch', function (b) { b.onclick = function () { menu.hidden = true; wm.hidden = true; loginEmail(true); }; });
   }
-  document.addEventListener('click', function (e) { var w = $('who'), m = w && w.querySelector('.menu'); if (m && !m.hidden && !w.contains(e.target)) m.hidden = true; });
+  document.addEventListener('click', function (e) {
+    var w = $('who'), m = w && w.querySelector('.menu'); if (m && !m.hidden && !w.contains(e.target)) m.hidden = true;
+    var wm = $('whoM'); if (wm && !wm.hidden && !wm.firstChild.contains(e.target)) wm.hidden = true;
+    if (wm && !wm.hidden && e.target.closest && e.target.closest('[data-open]')) wm.hidden = true;
+  });
   function bcast(msg) { // ส่งถึงหน้าระบบที่ซ้อนอยู่ในกรอบของ Google (2–3 ชั้น)
     (function walk(win, d) { try { win.postMessage(msg, '*'); } catch (e) { } if (d > 3) return; try { for (var i = 0; i < win.length; i++) walk(win.frames[i], d + 1); } catch (e) { } })(frame && frame.contentWindow, 0);
   }
